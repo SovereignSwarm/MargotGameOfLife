@@ -55,6 +55,7 @@ Each feature entry below is a gate, not a brainstorm. Every entry must define:
 - **Goal**: Let the player turn apples and flour into pie using `recipe/pie` at `place/crafting_station`.
 - **Player-facing behavior**: A player with the required ingredients can craft `item/pie`; a player without them cannot.
 - **Required inputs/state**: `recipe/pie`, `place/crafting_station`, `item/apple`, `item/flour`, `item/pie`, player inventory.
+- **Block A bootstrap note**: A temporary bakery flour-bin support node tied to `place/crafting_station` is allowed in Block A to make the first value loop runnable. It does not establish broader permanent economy truth.
 - **Ownership scope**: Inputs and outputs are personal; `place/crafting_station` stays civic.
 - **Visible consequence**: Inputs are removed on success, pie appears in inventory, and the player can immediately use the result for sale or saving.
 - **Save impact**: Inventory changes from successful crafting must survive reload cleanly.

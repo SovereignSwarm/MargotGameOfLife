@@ -47,4 +47,48 @@ function economy.apply_coin_delta(player_state, delta)
     return next_state
 end
 
+function economy.sell_item_at_place(player_state, place_id, item_id, quantity)
+    if margot.data.places[place_id] == nil then
+        return nil, "unknown_place"
+    end
+
+    if place_id ~= "place/market_stall" then
+        return nil, "wrong_place"
+    end
+
+    if margot.data.items[item_id] == nil then
+        return nil, "unknown_item"
+    end
+
+    local amount = math.floor(tonumber(quantity) or 0)
+
+    if amount <= 0 then
+        return nil, "invalid_quantity"
+    end
+
+    local available_amount = margot.runtime.state.get_inventory_count((player_state or {}).inventory, item_id)
+
+    if available_amount < amount then
+        return nil, "missing_item"
+    end
+
+    local proceeds = economy.quote_item_sale(item_id, amount)
+
+    if proceeds <= 0 then
+        return nil, "invalid_sale_value"
+    end
+
+    local next_state = margot.runtime.state.copy_player_state(player_state)
+    local next_inventory, reason = margot.runtime.state.apply_inventory_delta(next_state.inventory, item_id, -amount)
+
+    if next_inventory == nil then
+        return nil, reason
+    end
+
+    next_state.inventory = next_inventory
+    next_state.coins = next_state.coins + proceeds
+
+    return next_state, nil, proceeds
+end
+
 margot.systems.economy = economy

@@ -29,5 +29,6 @@ load("systems/economy.lua")
 load("systems/ownership.lua")
 load("systems/projects.lua")
 load("systems/npc.lua")
+load("runtime/block_a.lua")
 
 margot.runtime.world_state = margot.runtime.persistence.load_world_state()

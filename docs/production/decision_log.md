@@ -64,3 +64,8 @@
 - Status: Accepted
 - Decision: Orchard and Bridge implementation must start with the locked readiness checklist and follow the approved block order from mechanical value to productive ownership to civic consequence to NPC reflection.
 - Consequence: Milestone 1 work should begin with Block A and should not pull later-block systems forward for convenience.
+
+## 2026-03-13 ADR-014 Block A Uses One Shared Starter Strip
+- Status: Accepted
+- Decision: Block A uses one shared civic starter strip bootstrapped once per world near a deterministic starter anchor, plus a temporary bakery flour-bin support node tied to `place/crafting_station`.
+- Consequence: Block A remains a single shared-world civic setup rather than per-player convenience seeding, and the flour bin stays explicit scaffolding for the first value loop rather than a permanent full-economy truth.

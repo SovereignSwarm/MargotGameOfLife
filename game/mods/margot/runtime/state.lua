@@ -24,6 +24,43 @@ function state.clone(value)
     return deep_copy(value)
 end
 
+function state.copy_inventory(inventory)
+    return deep_copy(inventory or {})
+end
+
+function state.get_inventory_count(inventory, item_id)
+    local raw_amount = (inventory or {})[item_id] or 0
+    local amount = math.floor(tonumber(raw_amount) or 0)
+
+    if amount < 0 then
+        return 0
+    end
+
+    return amount
+end
+
+function state.apply_inventory_delta(inventory, item_id, delta)
+    if margot.data.items[item_id] == nil then
+        return nil, "unknown_item"
+    end
+
+    local next_inventory = state.copy_inventory(inventory)
+    local item_delta = math.floor(tonumber(delta) or 0)
+    local next_amount = state.get_inventory_count(next_inventory, item_id) + item_delta
+
+    if next_amount < 0 then
+        return nil, "insufficient_items"
+    end
+
+    if next_amount == 0 then
+        next_inventory[item_id] = nil
+    else
+        next_inventory[item_id] = next_amount
+    end
+
+    return next_inventory, nil
+end
+
 function state.new_player_state(player_id)
     return stamp_versions({
         player_id = player_id or "",

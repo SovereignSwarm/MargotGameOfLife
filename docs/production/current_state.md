@@ -4,12 +4,12 @@
 This page is the operational orientation for the repo. Read it to see the active milestone, the current production priority, the top risks, and the next valid steps before broader coding begins.
 
 ## Current Milestone
-`Milestone 0 - Canon and Repo Foundation`
+`Milestone 1 - Orchard and Bridge`
 
-The repo is still here because Milestone 1 implementation has not started yet, but the structural Orchard and Bridge readiness layer is now locked and must be treated as the source of truth.
+Milestone 1 has now started. Block A runtime implementation is in the repo, and the next honest gate is in-engine verification of the Block A exit condition before Block B begins.
 
 ## Current Priority
-Begin Milestone 1 only through `docs/production/milestone_1_checklist.md`, Block A in `docs/production/milestone_1_implementation_order.md`, `docs/design/milestone_1_ownership_semantics.md`, and `docs/design/milestone_1_acceptance_criteria.md`.
+Verify the implemented Block A shared starter strip and personal value loop against `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, `docs/design/milestone_1_ownership_semantics.md`, and `docs/design/milestone_1_acceptance_criteria.md`. Do not begin Block B until the Block A exit condition is proven in practice.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -24,10 +24,14 @@ Begin Milestone 1 only through `docs/production/milestone_1_checklist.md`, Block
 - starter canonical IDs are now frozen for the Orchard and Bridge slice
 - starter save-state boundaries and smoke expectations are now documented for Milestone 1
 - private co-op, additive growth, visible civic consequence, and money-as-fuel are already locked
+- Block A nodes now exist in runtime for orchard pickup, bakery flour pickup, pie crafting, and pie sale
+- a one-time shared starter civic strip bootstrap now exists for the Block A places
+- Block A still keeps personal inventory and `player_state.coins` as the only personal authorities it touches
 
 ## What Is Not Ready Yet
 - the Orchard and Bridge slice is not yet fully implemented
-- the ten Milestone 1 features are still unbuilt
+- Block A still needs in-engine verification against its exit condition and save/load smoke expectations
+- Blocks B, C, and D are still unbuilt
 - household semantics remain deferred to Milestone 2
 - save smoke expectations are defined, but feature passes still need to verify them as real gameplay state lands
 
@@ -38,8 +42,8 @@ Begin Milestone 1 only through `docs/production/milestone_1_checklist.md`, Block
 - NPC commentary drifting into chatter instead of state-based consequence
 
 ## Immediate Reinforcement Moves
-- start with Block A only
-- use `docs/production/milestone_1_checklist.md` at the start of each implementation pass
+- keep Block A limited to the current shared starter strip, personal inventory, crafting, sale, and coin flow only
+- verify the implemented Block A loop in-engine before beginning Block B
 - keep personal and civic authorities singular and explicit
 - verify the Milestone 1 save smoke expectations as each block becomes real
 
@@ -52,9 +56,9 @@ Begin Milestone 1 only through `docs/production/milestone_1_checklist.md`, Block
 - framework-heavy or UI-polish work
 
 ## Approved Next Baby Steps
-1. implement Block A `apple source / pickup`
-2. implement Block A `pie recipe / crafting`
-3. implement Block A `pie sale / coin earning`
+1. run in-engine verification for Block A `apple source / pickup`
+2. run in-engine verification for Block A `pie recipe / crafting`
+3. run in-engine verification for Block A `pie sale / coin earning`
 4. verify Block A against `docs/production/milestone_1_checklist.md` and `docs/design/milestone_1_acceptance_criteria.md`
 5. do not begin Block B until Block A exit conditions are true
 
