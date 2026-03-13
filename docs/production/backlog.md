@@ -14,10 +14,10 @@ Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `
 
 ### Block B - Productive Ownership
 - implemented in runtime on 2026-03-13 in a narrow personal-ownership form
-1. verify apple tree purchase
-2. verify recurring tree yield and save/load behavior
-3. verify two-player personal ownership isolation at the shared tree surface
-4. do not begin Block C until Block B exit condition is verified
+- dedicated runtime verification pass completed on 2026-03-13
+- starter-surface bootstrap-order fix landed on 2026-03-13; the shared starter strip and shared tree surface now come up through the normal first-join path without leaving Block A bootstrap pending
+- honestly verified end-to-end in-engine on 2026-03-13 for normal-path bootstrap, personal purchase, recurring yield, save/load, and two-player separation
+- keep frozen at current scope while Block C begins
 
 ### Block C - Civic Consequence
 1. implement bridge contribution

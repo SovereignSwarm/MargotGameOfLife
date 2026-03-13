@@ -6,10 +6,10 @@ This page is the operational orientation for the repo. Read it to see the active
 ## Current Milestone
 `Milestone 1 - Orchard and Bridge`
 
-Milestone 1 has now started. Block A has been verified end-to-end in-engine for the personal apple -> pie -> coin loop, and Block B now exists in runtime in a minimal personal-ownership form. The next honest gate is a dedicated Block B verification pass before Block C begins.
+Milestone 1 has now started. Block A has been verified end-to-end in-engine for the personal apple -> pie -> coin loop, and Block B has now been honestly verified end-to-end in-engine on the normal runtime path. The next valid work is Block C only, and Block D remains gated behind real civic state.
 
 ## Current Priority
-Verify Block B only through `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, `docs/design/milestone_1_ownership_semantics.md`, and `docs/design/milestone_1_acceptance_criteria.md`. Keep Block A frozen, keep Block B narrow, and do not begin Block C until Block B exit conditions are honestly true.
+Begin Block C only through `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, `docs/design/milestone_1_ownership_semantics.md`, and `docs/design/milestone_1_acceptance_criteria.md`. Keep Blocks A and B frozen at their verified scope, and do not begin Block D until Block C exit conditions are honestly true.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -31,11 +31,14 @@ Verify Block B only through `docs/production/milestone_1_checklist.md`, `docs/pr
 - Block A has now been verified in-engine for starter-strip bootstrap, apple pickup, flour pickup, pie crafting success/failure, pie sale success/failure, save/load round-trip, and separate personal state for two players sharing the same civic strip
 - Block B now adds one shared starter-strip apple tree interaction surface that resolves to each player's own personal ownership and readiness state
 - Block B now records starter tree ownership only in `player_state.owned_assets["asset/apple_tree"]` and reads tree cost and apple yield from the existing asset definition
-- Block B purchase and recurring yield are now implemented, but not yet verified end-to-end in-engine
+- Block B purchase success, purchase failure, no double purchase, same-day not-ready behavior, save/load round-trip, and separate personal ownership state have now been runtime-verified
+- Block B recurring yield and two-player harvest separation have now been runtime-verified under a verification-world day-count advance
+- Block B startup no longer tries to place its shared tree surface during a disallowed init phase
+- the normal shared starter-strip path now comes up cleanly on first player join, and `bootstrap/block_a_starter_strip` now lands on `placed` instead of stalling at `pending`
+- Block B is now honestly verified end-to-end in-engine for normal-path bootstrap, purchase success, purchase failure, no double purchase, same-day not-ready behavior, next-day harvest, save/load round-trip, and two-player separation at the shared tree surface
 
 ## What Is Not Ready Yet
 - the Orchard and Bridge slice is not yet fully implemented
-- Block B is not yet verified end-to-end against its exit condition
 - Blocks C and D are still unbuilt
 - household semantics remain deferred to Milestone 2
 - save smoke expectations are defined, but feature passes still need to verify them as real gameplay state lands
@@ -48,8 +51,8 @@ Verify Block B only through `docs/production/milestone_1_checklist.md`, `docs/pr
 
 ## Immediate Reinforcement Moves
 - keep Block A limited to the verified shared starter strip, personal inventory, crafting, sale, and coin flow only
-- keep the current prototype accessibility layer only as the minimum starter-area support needed for Block A and future Block B verification
-- verify Block B before any Block C implementation begins
+- keep the current prototype accessibility layer only as the minimum starter-area support needed for verified Blocks A and B plus future Block C verification
+- keep Block B frozen at the verified personal tree scope
 - keep personal and civic authorities singular and explicit
 - verify the Milestone 1 save smoke expectations as each block becomes real
 
@@ -62,10 +65,10 @@ Verify Block B only through `docs/production/milestone_1_checklist.md`, `docs/pr
 - framework-heavy or UI-polish work
 
 ## Approved Next Baby Steps
-1. verify Block B `apple tree purchase`
-2. verify Block B `recurring tree yield` and save/load behavior
-3. verify two-player personal ownership isolation at the shared tree surface
-4. do not begin Block C until Block B exit conditions are true
+1. implement Block C `bridge contribution`
+2. implement Block C `bridge stage progression`
+3. implement Block C `bridge completion outcome`
+4. do not begin Block D until Block C exit conditions are true
 
 ## Read This Before You Touch...
 ### Code

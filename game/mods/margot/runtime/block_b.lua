@@ -264,7 +264,7 @@ minetest.register_node(tree_node_name, {
     end,
 })
 
-minetest.register_on_mods_loaded(function()
+minetest.register_on_joinplayer(function()
     block_b.ensure_tree_surface()
 end)
 
