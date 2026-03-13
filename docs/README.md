@@ -25,22 +25,25 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 10. `docs/canon/lore_constitution.md`
 11. `docs/design/v1_vertical_slice.md`
 12. `docs/design/architecture.md`
-13. `docs/production/README.md`
-14. `docs/production/development_operating_model.md`
-15. `docs/production/risk_register.md`
-16. `docs/production/roadmap.md`
-17. `docs/production/backlog.md`
-18. `docs/production/decision_log.md`
-19. `docs/production/id_policy.md`
-20. `docs/production/save_compatibility_policy.md`
-21. `docs/production/content_schema_reference.md`
-22. `docs/production/title_strategy.md`
+13. `docs/design/milestone_1_acceptance_criteria.md`
+14. `docs/production/README.md`
+15. `docs/production/development_operating_model.md`
+16. `docs/production/risk_register.md`
+17. `docs/production/roadmap.md`
+18. `docs/production/production_scale_phase_plan.md`
+19. `docs/production/backlog.md`
+20. `docs/production/decision_log.md`
+21. `docs/production/id_policy.md`
+22. `docs/production/save_compatibility_policy.md`
+23. `docs/production/content_schema_reference.md`
+24. `docs/production/title_strategy.md`
 
 ## Read By Task
 ### Changing Code
 - `docs/production/current_state.md`
 - `docs/design/v1_vertical_slice.md`
 - `docs/design/architecture.md`
+- `docs/design/milestone_1_acceptance_criteria.md`
 - `docs/production/development_operating_model.md`
 - `docs/production/risk_register.md`
 
@@ -74,6 +77,7 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 ### Milestone Planning
 - `docs/production/roadmap.md`
 - `docs/production/current_state.md`
+- `docs/production/production_scale_phase_plan.md`
 - `docs/production/backlog.md`
 - `docs/production/development_operating_model.md`
 - `docs/production/risk_register.md`

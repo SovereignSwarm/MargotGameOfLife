@@ -168,18 +168,18 @@ Notes:
 - **Containment If Triggered**: stop calling the feature "co-op complete" and re-anchor on household and shared-scope decisions
 - **Owner / Watcher**: Human Owner, Slice Watcher
 
-### Implementation Beginning Before Acceptance Criteria Are Explicit
-- **Risk Name**: Implementation Beginning Before Acceptance Criteria Are Explicit
+### Implementation Beginning Outside The Milestone 1 Acceptance Gate
+- **Risk Name**: Implementation Beginning Outside The Milestone 1 Acceptance Gate
 - **Category**: Production/process drift
 - **Why It Matters**: This is the fastest path to vague passes, repeated rewrites, and AI-generated churn disguised as progress.
 - **Likelihood**: High
 - **Impact**: High
 - **Detection**: Easy
 - **Status**: Active
-- **Early Warning Signs**: backlog item implemented directly from chat; no feature-level proof of success; unclear stop condition
+- **Early Warning Signs**: backlog item implemented directly from chat; `milestone_1_acceptance_criteria.md` is not referenced; no feature-level proof of success; unclear stop condition
 - **Likely Trigger Point**: any major Codex or Cursor pass on Milestone 1 items
-- **Prevention Now**: define acceptance criteria before implementation using the operating model's artifact ladder
-- **Containment If Triggered**: stop the pass, backfill criteria, and resume only when the proof target is explicit
+- **Prevention Now**: use `docs/design/milestone_1_acceptance_criteria.md` as the implementation gate for Milestone 1 work
+- **Containment If Triggered**: stop the pass, reconcile the work against the acceptance doc, backfill the missing criteria mapping, and resume only when the gate is explicit
 - **Owner / Watcher**: Production Watcher, Human Owner
 
 ### AI Tools Drifting From Repo Truth
@@ -218,7 +218,7 @@ Notes:
 - AI tools drifting from repo truth
 
 ### Milestone 1 - Orchard and Bridge
-- Implementation beginning before acceptance criteria are explicit
+- Implementation beginning outside the Milestone 1 acceptance gate
 - NPCs becoming text-heavy instead of systemically useful
 - First saves created before migration discipline is real
 - Child-readable visible consequence weakening into abstract progress
@@ -243,7 +243,7 @@ Notes:
 
 ## Problems To Solve Now, Not Later
 - tighten the first content records against `content_schema_reference.md`
-- define acceptance criteria before Milestone 1 implementation passes
+- use `docs/design/milestone_1_acceptance_criteria.md` as the implementation gate before Milestone 1 implementation passes
 - lock explicit personal, household, and civic ownership semantics before Milestone 2
 - smoke-test save/load plus migration entry points before first durable saves
 - review and freeze the starter canonical IDs before feature work makes them expensive to change
@@ -300,8 +300,8 @@ If a risk changes status, update this register in the same pass that discovered 
 - every saved field has a clear owner layer
 - player, household, and civic state paths are explicit and reviewed before feature expansion
 
-### Implementation Beginning Before Acceptance Criteria Are Explicit
-- Milestone 1 feature work has explicit acceptance criteria before implementation begins
+### Implementation Beginning Outside The Milestone 1 Acceptance Gate
+- Milestone 1 feature work cites `docs/design/milestone_1_acceptance_criteria.md` before implementation begins
 - backlog items are no longer interpreted directly from vague chat intent
 
 ### First Saves Created Before Migration Discipline Is Real

@@ -11,7 +11,7 @@ Money is not the goal. Money is fuel.
 ## Current Milestone
 The repo is currently in `Milestone 0 - Canon and Repo Foundation`.
 
-The current focus is making `Milestone 1 - Orchard and Bridge` safe to implement by hardening IDs, schema consistency, acceptance criteria, ownership semantics, and save discipline first.
+The current focus is making `Milestone 1 - Orchard and Bridge` safe to implement by hardening IDs, schema consistency, ownership semantics, and save discipline, then implementing against the explicit Milestone 1 acceptance gate.
 
 ## V1 Loop
 Build a tiny Luanti-based multiplayer prototype proving this loop:

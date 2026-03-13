@@ -34,3 +34,8 @@
 - Status: Accepted
 - Decision: early productive ownership should be concrete and child-legible.
 - Consequence: favor assets such as trees, tools, and market capacity before abstract financial instruments or institutional layers.
+
+## 2026-03-13 ADR-008 Ordered Additive Production Scaling
+- Status: Accepted
+- Decision: the project should scale through ordered additive production phases rather than solving later-phase problems inside early-phase implementation.
+- Consequence: milestone planning should use `production_scale_phase_plan.md`; later-phase concerns should not be smuggled into Milestone 0 or Milestone 1 work.

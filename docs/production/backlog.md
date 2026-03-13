@@ -5,12 +5,12 @@ This backlog is intentionally near-term. It turns the roadmap and risk register 
 ## Milestone 0 - Canon and Repo Foundation
 1. review and freeze starter canonical IDs for Orchard and Bridge
 2. align starter item, recipe, asset, place, project, and NPC records to `content_schema_reference.md`
-3. define acceptance criteria for each Milestone 1 feature before implementation
+3. use `docs/design/milestone_1_acceptance_criteria.md` as the implementation gate for each Milestone 1 feature
 4. add a save/load smoke check for world state, player state, version round-trips, and migration entry points
 5. lock explicit personal, household, and civic ownership semantics for the current slice and Milestone 2 prep
 
 ## Milestone 1 - Orchard and Bridge
-Milestone 1 stays gated by the Milestone 0 reinforcement work above.
+Milestone 1 stays gated by the Milestone 0 reinforcement work above and by `docs/design/milestone_1_acceptance_criteria.md`.
 
 1. implement apple source and pickup flow
 2. implement pie crafting at the crafting station
