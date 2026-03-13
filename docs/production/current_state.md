@@ -26,6 +26,7 @@ Verify the implemented Block A shared starter strip and personal value loop agai
 - private co-op, additive growth, visible civic consequence, and money-as-fuel are already locked
 - Block A nodes now exist in runtime for orchard pickup, bakery flour pickup, pie crafting, and pie sale
 - a one-time shared starter civic strip bootstrap now exists for the Block A places
+- a prototype accessibility layer now fixes the Block A starter anchor at a safe shared platform, maps the missing starter-world mapgen aliases to inert substrate, and places fresh or obviously broken players at the starter area after bootstrap completes
 - Block A still keeps personal inventory and `player_state.coins` as the only personal authorities it touches
 
 ## What Is Not Ready Yet
@@ -43,6 +44,7 @@ Verify the implemented Block A shared starter strip and personal value loop agai
 
 ## Immediate Reinforcement Moves
 - keep Block A limited to the current shared starter strip, personal inventory, crafting, sale, and coin flow only
+- use the current prototype accessibility layer only to keep the shared starter strip reachable for honest Block A verification
 - verify the implemented Block A loop in-engine before beginning Block B
 - keep personal and civic authorities singular and explicit
 - verify the Milestone 1 save smoke expectations as each block becomes real
@@ -56,11 +58,12 @@ Verify the implemented Block A shared starter strip and personal value loop agai
 - framework-heavy or UI-polish work
 
 ## Approved Next Baby Steps
-1. run in-engine verification for Block A `apple source / pickup`
-2. run in-engine verification for Block A `pie recipe / crafting`
-3. run in-engine verification for Block A `pie sale / coin earning`
-4. verify Block A against `docs/production/milestone_1_checklist.md` and `docs/design/milestone_1_acceptance_criteria.md`
-5. do not begin Block B until Block A exit conditions are true
+1. rerun in-engine verification on a fresh world now that the shared starter strip has a fixed safe starter area
+2. run in-engine verification for Block A `apple source / pickup`
+3. run in-engine verification for Block A `pie recipe / crafting`
+4. run in-engine verification for Block A `pie sale / coin earning`
+5. verify Block A against `docs/production/milestone_1_checklist.md` and `docs/design/milestone_1_acceptance_criteria.md`
+6. do not begin Block B until Block A exit conditions are true
 
 ## Read This Before You Touch...
 ### Code

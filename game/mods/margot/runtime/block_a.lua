@@ -2,18 +2,32 @@ local block_a = {}
 local storage = minetest.get_mod_storage()
 
 local bootstrap_key = "bootstrap/block_a_starter_strip"
+local bootstrap_layout_version = 2
 local node_names = {
+    prototype_substrate = "margot:prototype_substrate",
     orchard = "margot:block_a_orchard",
     flour_bin = "margot:block_a_flour_bin",
     crafting_station = "margot:block_a_crafting_station",
     market_stall = "margot:block_a_market_stall",
 }
-local starter_offsets = {
+local starter_origin = { x = 0, y = 4, z = 0 }
+local safe_spawn = { x = 1.5, y = 5.5, z = 2.0 }
+local platform_bounds = {
+    min = { x = -1, y = 3, z = -1 },
+    max = { x = 4, y = 3, z = 2 },
+}
+local clear_bounds = {
+    min = { x = -1, y = 4, z = -1 },
+    max = { x = 4, y = 7, z = 2 },
+}
+local starter_nodes = {
     orchard = { x = 0, y = 0, z = 0 },
     flour_bin = { x = 1, y = 0, z = 0 },
     crafting_station = { x = 2, y = 0, z = 0 },
     market_stall = { x = 3, y = 0, z = 0 },
 }
+local bootstrap_in_progress = false
+local bootstrap_waiters = {}
 
 local function add_pos(base, offset)
     return {
@@ -23,41 +37,111 @@ local function add_pos(base, offset)
     }
 end
 
-local function round_pos(pos)
-    return {
-        x = math.floor((pos.x or 0) + 0.5),
-        y = math.floor((pos.y or 0) + 0.5),
-        z = math.floor((pos.z or 0) + 0.5),
-    }
-end
-
-local function parse_spawn_anchor(raw_value)
-    if raw_value == nil or raw_value == "" then
-        return nil
-    end
-
-    local parsed = minetest.string_to_pos(raw_value)
-
-    if parsed ~= nil then
-        return parsed
-    end
-
-    local x, y, z = string.match(raw_value, "^%s*(-?[%d%.]+)%s*,%s*(-?[%d%.]+)%s*,%s*(-?[%d%.]+)%s*$")
-
-    if x == nil then
+local function copy_pos(pos)
+    if pos == nil then
         return nil
     end
 
     return {
-        x = tonumber(x) or 0,
-        y = tonumber(y) or 0,
-        z = tonumber(z) or 0,
+        x = pos.x,
+        y = pos.y,
+        z = pos.z,
     }
 end
 
 local function get_starter_anchor()
-    local spawn_anchor = parse_spawn_anchor(minetest.settings:get("static_spawnpoint"))
-    return round_pos(spawn_anchor or { x = 0, y = 0, z = 0 })
+    return copy_pos(starter_origin)
+end
+
+local function get_safe_spawn()
+    return copy_pos(safe_spawn)
+end
+
+local function player_storage_key(player_name)
+    return "player/" .. tostring(player_name)
+end
+
+local function deserialize(raw_value)
+    if raw_value == nil or raw_value == "" then
+        return nil
+    end
+
+    local ok, decoded = pcall(minetest.deserialize, raw_value)
+
+    if ok then
+        return decoded
+    end
+
+    return nil
+end
+
+local function get_bootstrap_state()
+    return deserialize(storage:get_string(bootstrap_key))
+end
+
+local function is_current_bootstrap_state(state)
+    return type(state) == "table"
+        and state.status == "placed"
+        and tonumber(state.layout_version) == bootstrap_layout_version
+end
+
+local function get_starter_area_bounds(anchor)
+    return add_pos(anchor, platform_bounds.min), add_pos(anchor, clear_bounds.max)
+end
+
+local function for_each_pos(minp, maxp, fn)
+    for x = minp.x, maxp.x do
+        for y = minp.y, maxp.y do
+            for z = minp.z, maxp.z do
+                fn({ x = x, y = y, z = z })
+            end
+        end
+    end
+end
+
+local function flush_bootstrap_waiters(layout)
+    local waiters = bootstrap_waiters
+    bootstrap_waiters = {}
+
+    for _, waiter in ipairs(waiters) do
+        waiter(layout)
+    end
+end
+
+local function is_broken_world_position(pos)
+    return pos ~= nil and (tonumber(pos.y) or 0) < -100
+end
+
+local function player_has_saved_personal_state(player_name)
+    return storage:get_string(player_storage_key(player_name)) ~= ""
+end
+
+local function place_player_at_safe_spawn(player_name)
+    local player = minetest.get_player_by_name(player_name)
+
+    if player == nil then
+        return
+    end
+
+    player:set_pos(get_safe_spawn())
+end
+
+local function ensure_player_access(player)
+    if player == nil then
+        return
+    end
+
+    local player_name = player:get_player_name()
+    local should_place_player = (not player_has_saved_personal_state(player_name))
+        or is_broken_world_position(player:get_pos())
+
+    block_a.ensure_starter_strip(function()
+        if should_place_player then
+            minetest.after(0, function()
+                place_player_at_safe_spawn(player_name)
+            end)
+        end
+    end)
 end
 
 local function format_status(player_state)
@@ -153,7 +237,7 @@ local function handle_sale(player)
 end
 
 local function new_node_def(description, tiles, action)
-    return {
+    local definition = {
         description = description,
         tiles = { tiles },
         groups = {
@@ -164,36 +248,67 @@ local function new_node_def(description, tiles, action)
             return player ~= nil and minetest.check_player_privs(player, { server = true })
         end,
         on_blast = function() end,
-        on_rightclick = function(_, _, player)
+    }
+
+    if action ~= nil then
+        definition.on_rightclick = function(_, _, player)
             if player ~= nil then
                 action(player)
             end
-        end,
-        on_punch = function(_, _, puncher)
+        end
+
+        definition.on_punch = function(_, _, puncher)
             if puncher ~= nil and puncher:is_player() then
                 action(puncher)
             end
-        end,
-    }
+        end
+    end
+
+    return definition
 end
 
-local function place_starter_strip(anchor)
-    minetest.set_node(add_pos(anchor, starter_offsets.orchard), { name = node_names.orchard })
-    minetest.set_node(add_pos(anchor, starter_offsets.flour_bin), { name = node_names.flour_bin })
-    minetest.set_node(add_pos(anchor, starter_offsets.crafting_station), { name = node_names.crafting_station })
-    minetest.set_node(add_pos(anchor, starter_offsets.market_stall), { name = node_names.market_stall })
+local function place_starter_area(anchor)
+    local platform_min = add_pos(anchor, platform_bounds.min)
+    local platform_max = add_pos(anchor, platform_bounds.max)
+    local clear_min = add_pos(anchor, clear_bounds.min)
+    local clear_max = add_pos(anchor, clear_bounds.max)
+
+    for_each_pos(platform_min, platform_max, function(pos)
+        minetest.set_node(pos, { name = node_names.prototype_substrate })
+    end)
+
+    for_each_pos(clear_min, clear_max, function(pos)
+        minetest.set_node(pos, { name = "air" })
+    end)
+
+    minetest.set_node(add_pos(anchor, starter_nodes.orchard), { name = node_names.orchard })
+    minetest.set_node(add_pos(anchor, starter_nodes.flour_bin), { name = node_names.flour_bin })
+    minetest.set_node(add_pos(anchor, starter_nodes.crafting_station), { name = node_names.crafting_station })
+    minetest.set_node(add_pos(anchor, starter_nodes.market_stall), { name = node_names.market_stall })
 end
 
-function block_a.ensure_starter_strip()
-    local marker = storage:get_string(bootstrap_key)
+function block_a.ensure_starter_strip(on_ready)
+    local current_state = get_bootstrap_state()
 
-    if marker ~= "" then
+    if is_current_bootstrap_state(current_state) then
+        if on_ready ~= nil then
+            on_ready(current_state)
+        end
         return
     end
 
+    if on_ready ~= nil then
+        table.insert(bootstrap_waiters, on_ready)
+    end
+
+    if bootstrap_in_progress then
+        return
+    end
+
+    bootstrap_in_progress = true
+
     local anchor = get_starter_anchor()
-    local minp = add_pos(anchor, { x = -1, y = -1, z = -1 })
-    local maxp = add_pos(anchor, { x = 4, y = 1, z = 1 })
+    local minp, maxp = get_starter_area_bounds(anchor)
 
     storage:set_string(bootstrap_key, "pending")
     minetest.emerge_area(minp, maxp, function(_, _, remaining)
@@ -201,13 +316,29 @@ function block_a.ensure_starter_strip()
             return
         end
 
-        place_starter_strip(anchor)
-        storage:set_string(bootstrap_key, minetest.serialize({
+        place_starter_area(anchor)
+
+        local layout = {
             anchor = anchor,
+            layout_version = bootstrap_layout_version,
             status = "placed",
-        }))
+        }
+
+        storage:set_string(bootstrap_key, minetest.serialize(layout))
+        bootstrap_in_progress = false
+        flush_bootstrap_waiters(layout)
     end)
 end
+
+minetest.register_node(node_names.prototype_substrate, new_node_def(
+    "Margot Prototype Substrate (Admin Recovery)",
+    "[fill:16x16:#7a7466",
+    nil
+))
+
+minetest.register_alias_force("mapgen_stone", node_names.prototype_substrate)
+minetest.register_alias_force("mapgen_water_source", node_names.prototype_substrate)
+minetest.register_alias_force("mapgen_river_water_source", node_names.prototype_substrate)
 
 minetest.register_node(node_names.orchard, new_node_def(
     "Margot Block A Orchard (Admin Recovery)",
@@ -237,8 +368,13 @@ minetest.register_node(node_names.market_stall, new_node_def(
     handle_sale
 ))
 
-minetest.register_on_joinplayer(function()
-    block_a.ensure_starter_strip()
+minetest.register_on_joinplayer(function(player)
+    ensure_player_access(player)
+end)
+
+minetest.register_on_respawnplayer(function(player)
+    ensure_player_access(player)
+    return true
 end)
 
 minetest.register_chatcommand("margot_status", {

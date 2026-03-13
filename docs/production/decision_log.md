@@ -69,3 +69,8 @@
 - Status: Accepted
 - Decision: Block A uses one shared civic starter strip bootstrapped once per world near a deterministic starter anchor, plus a temporary bakery flour-bin support node tied to `place/crafting_station`.
 - Consequence: Block A remains a single shared-world civic setup rather than per-player convenience seeding, and the flour bin stays explicit scaffolding for the first value loop rather than a permanent full-economy truth.
+
+## 2026-03-13 ADR-015 Block A Uses A Prototype Accessibility Layer
+- Status: Accepted
+- Decision: Block A runtime accessibility uses one inert prototype substrate node for the required starter-world mapgen aliases, a fixed safe starter anchor and platform, and ordered join or respawn placement that only happens after the shared starter area is ready.
+- Consequence: the prototype can be tested from a fresh world without widening into a broader world-generation system, while Block A remains one shared civic strip and keeps gameplay authority in per-player inventory plus `player_state.coins`.
