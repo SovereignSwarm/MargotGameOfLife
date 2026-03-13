@@ -114,7 +114,7 @@ Protect wonder-tier readability while adding depth. New layers should introduce 
 - **Require explicit human review** for canon changes, save-impacting changes, ownership-layer changes, milestone-boundary changes, and any change that risks replacing rather than extending the game.
 
 ## Working Rhythm
-Foundation first. One baby step at a time. Keep commits small and intention-revealing. Write or tighten docs before major implementation changes. Use direct-to-`main` only after consciously checking the required gates. Run regular brutal review passes that cut drift, shrink scope, and force clarity before the repo gets bigger.
+Foundation first. One baby step at a time. Keep commits small and intention-revealing. Write or tighten docs before major implementation changes. Use direct-to-`main` only after consciously checking the required gates. End every substantial design, production, architecture, or implementation pass with a post-task documentation sync. Run regular brutal review passes that cut drift, shrink scope, and force clarity before the repo gets bigger.
 
 ## Explicit Anti-Goals
 - scope-chaotic prototype swamp

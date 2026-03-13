@@ -15,6 +15,7 @@ Foundation hardening that makes Orchard and Bridge safe to implement: freeze sta
 - canon, design, and production hierarchy exists
 - Orchard and Bridge is the active slice
 - Milestone 1 acceptance criteria and the production-scale phase plan now exist
+- the Codex workflow and post-task documentation sync rule now exist
 - runtime is already split into `data/`, `systems/`, and `runtime/`
 - ID policy, save policy, schema reference, operating model, risk register, and title strategy exist
 - private co-op, additive growth, visible civic consequence, and money-as-fuel are already locked
@@ -62,6 +63,7 @@ Foundation hardening that makes Orchard and Bridge safe to implement: freeze sta
 ### Code
 - `docs/README.md`
 - `docs/production/current_state.md`
+- `docs/production/codex_workflow.md`
 - `docs/design/v1_vertical_slice.md`
 - `docs/design/architecture.md`
 - `docs/design/milestone_1_acceptance_criteria.md`
@@ -92,6 +94,7 @@ Foundation hardening that makes Orchard and Bridge safe to implement: freeze sta
 ### Milestone Planning
 - `docs/production/roadmap.md`
 - `docs/production/current_state.md`
+- `docs/production/codex_workflow.md`
 - `docs/production/production_scale_phase_plan.md`
 - `docs/production/backlog.md`
 - `docs/production/development_operating_model.md`

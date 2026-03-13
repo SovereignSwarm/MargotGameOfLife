@@ -39,3 +39,8 @@
 - Status: Accepted
 - Decision: the project should scale through ordered additive production phases rather than solving later-phase problems inside early-phase implementation.
 - Consequence: milestone planning should use `production_scale_phase_plan.md`; later-phase concerns should not be smuggled into Milestone 0 or Milestone 1 work.
+
+## 2026-03-13 ADR-009 Codex Workflow And Post-Task Sync Are Mandatory
+- Status: Accepted
+- Decision: Codex should follow an explicit repo workflow and every substantial task should end with a post-task documentation sync pass.
+- Consequence: use `docs/production/codex_workflow.md` as the Codex operating contract, and treat the sync pass as required work rather than optional cleanup.

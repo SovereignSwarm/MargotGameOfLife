@@ -6,6 +6,7 @@ Money is not the goal. Money is fuel.
 
 ## Start Here
 - Read `docs/README.md` for the full docs map and authority order.
+- If you are working through Codex or Cursor, read `AGENTS.md` for the repo operating contract.
 - Then read `docs/production/current_state.md` for the active milestone, current priority, top risks, and approved next baby steps.
 
 ## Current Milestone

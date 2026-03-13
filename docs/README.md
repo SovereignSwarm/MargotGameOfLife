@@ -1,11 +1,13 @@
 # Docs Map
 
 ## Purpose
-This folder is the navigation map and authority order for MargotGameOfLife. Use it to understand what the game is, what matters now, and which docs control which decisions.
+This folder is the navigation map and authority order for MargotGameOfLife. Use it to understand what the game is, what matters now, which docs control which decisions, and how Codex should navigate the repo safely.
 
 ## Start Here
-- Read `docs/README.md` first.
+- Read `README.md` first for the repo landing page.
+- If you are working through Codex or Cursor, read `AGENTS.md` next.
 - Then read `docs/production/current_state.md` for the active milestone, current priority, top risks, and approved next baby steps.
+- Then read `docs/production/codex_workflow.md` for the repo-specific Codex execution contract.
 
 ## Folder Meanings
 - `canon/`: permanent identity rules that should survive engine changes and years of additive growth.
@@ -13,34 +15,38 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - `production/`: operational docs for milestone control, risk, IDs, saves, schemas, and working discipline.
 
 ## Current Reading Order
-1. `docs/README.md`
-2. `docs/production/current_state.md`
-3. `docs/canon/vision.md`
-4. `docs/canon/game_constitution.md`
-5. `docs/canon/core_ontology.md`
-6. `docs/canon/progression_by_comprehension_tier.md`
-7. `docs/canon/economy_constitution.md`
-8. `docs/canon/society_constitution.md`
-9. `docs/canon/npc_constitution.md`
-10. `docs/canon/lore_constitution.md`
-11. `docs/design/v1_vertical_slice.md`
-12. `docs/design/architecture.md`
-13. `docs/design/milestone_1_acceptance_criteria.md`
-14. `docs/production/README.md`
-15. `docs/production/development_operating_model.md`
-16. `docs/production/risk_register.md`
-17. `docs/production/roadmap.md`
-18. `docs/production/production_scale_phase_plan.md`
-19. `docs/production/backlog.md`
-20. `docs/production/decision_log.md`
-21. `docs/production/id_policy.md`
-22. `docs/production/save_compatibility_policy.md`
-23. `docs/production/content_schema_reference.md`
-24. `docs/production/title_strategy.md`
+1. `README.md`
+2. `AGENTS.md`
+3. `docs/README.md`
+4. `docs/production/current_state.md`
+5. `docs/production/codex_workflow.md`
+6. `docs/canon/vision.md`
+7. `docs/canon/game_constitution.md`
+8. `docs/canon/core_ontology.md`
+9. `docs/canon/progression_by_comprehension_tier.md`
+10. `docs/canon/economy_constitution.md`
+11. `docs/canon/society_constitution.md`
+12. `docs/canon/npc_constitution.md`
+13. `docs/canon/lore_constitution.md`
+14. `docs/design/v1_vertical_slice.md`
+15. `docs/design/architecture.md`
+16. `docs/design/milestone_1_acceptance_criteria.md`
+17. `docs/production/README.md`
+18. `docs/production/development_operating_model.md`
+19. `docs/production/risk_register.md`
+20. `docs/production/roadmap.md`
+21. `docs/production/production_scale_phase_plan.md`
+22. `docs/production/backlog.md`
+23. `docs/production/decision_log.md`
+24. `docs/production/id_policy.md`
+25. `docs/production/save_compatibility_policy.md`
+26. `docs/production/content_schema_reference.md`
+27. `docs/production/title_strategy.md`
 
 ## Read By Task
 ### Changing Code
 - `docs/production/current_state.md`
+- `docs/production/codex_workflow.md`
 - `docs/design/v1_vertical_slice.md`
 - `docs/design/architecture.md`
 - `docs/design/milestone_1_acceptance_criteria.md`
@@ -48,10 +54,11 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - `docs/production/risk_register.md`
 
 ### Touching IDs Or Saves
+- `docs/production/current_state.md`
+- `docs/production/codex_workflow.md`
 - `docs/production/id_policy.md`
 - `docs/production/save_compatibility_policy.md`
 - `docs/design/architecture.md`
-- `docs/production/current_state.md`
 - `docs/production/risk_register.md`
 
 ### Adding Content
@@ -77,6 +84,7 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 ### Milestone Planning
 - `docs/production/roadmap.md`
 - `docs/production/current_state.md`
+- `docs/production/codex_workflow.md`
 - `docs/production/production_scale_phase_plan.md`
 - `docs/production/backlog.md`
 - `docs/production/development_operating_model.md`
@@ -103,5 +111,6 @@ Update the relevant docs when:
 - the active milestone changes
 - the current production priority changes
 - current risks or approved next steps change materially
+- a substantial design, production, architecture, or implementation task completes and needs a post-task sync pass
 
 Do not let large design decisions live only in chat, commits, or code.

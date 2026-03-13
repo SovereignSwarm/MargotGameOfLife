@@ -190,9 +190,9 @@ Notes:
 - **Impact**: High
 - **Detection**: Hard
 - **Status**: Active
-- **Early Warning Signs**: proposals contradict canon or production docs; IDs and scopes differ across passes; undocumented decisions appear in code or chat only
+- **Early Warning Signs**: proposals contradict canon or production docs; IDs and scopes differ across passes; undocumented decisions appear in code or chat only; major tasks end without a post-task sync and leave current_state, backlog, or decision_log stale
 - **Likely Trigger Point**: long prompt chains, partial doc reading, or implementation started from memory instead of repo truth
-- **Prevention Now**: require `docs/README.md` first, then canon before design and production, and keep authority order explicit in prompts
+- **Prevention Now**: require `docs/README.md`, `docs/production/current_state.md`, and `docs/production/codex_workflow.md` first, then read canon before design and production, and keep authority order explicit in prompts
 - **Containment If Triggered**: run a brutal reconciliation pass against canon, design, and production; reject ungrounded changes; restate the current source of truth
 - **Owner / Watcher**: Human Owner, AI Workflow Watcher
 
