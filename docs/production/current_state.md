@@ -6,10 +6,10 @@ This page is the operational orientation for the repo. Read it to see the active
 ## Current Milestone
 `Milestone 1 - Orchard and Bridge`
 
-Milestone 1 has now started. Block A runtime implementation is in the repo, and the next honest gate is in-engine verification of the Block A exit condition before Block B begins.
+Milestone 1 has now started. Block A has been verified end-to-end in-engine for the personal apple -> pie -> coin loop, and the next honest gate is starting Block B without widening scope.
 
 ## Current Priority
-Verify the implemented Block A shared starter strip and personal value loop against `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, `docs/design/milestone_1_ownership_semantics.md`, and `docs/design/milestone_1_acceptance_criteria.md`. Do not begin Block B until the Block A exit condition is proven in practice.
+Begin Block B only through `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, `docs/design/milestone_1_ownership_semantics.md`, and `docs/design/milestone_1_acceptance_criteria.md`. Keep Block A frozen at its verified personal value-loop scope while adding no later-phase semantics outside the approved order.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -28,10 +28,10 @@ Verify the implemented Block A shared starter strip and personal value loop agai
 - a one-time shared starter civic strip bootstrap now exists for the Block A places
 - a prototype accessibility layer now fixes the Block A starter anchor at a safe shared platform, maps the missing starter-world mapgen aliases to inert substrate, and places fresh or obviously broken players at the starter area after bootstrap completes
 - Block A still keeps personal inventory and `player_state.coins` as the only personal authorities it touches
+- Block A has now been verified in-engine for starter-strip bootstrap, apple pickup, flour pickup, pie crafting success/failure, pie sale success/failure, save/load round-trip, and separate personal state for two players sharing the same civic strip
 
 ## What Is Not Ready Yet
 - the Orchard and Bridge slice is not yet fully implemented
-- Block A still needs in-engine verification against its exit condition and save/load smoke expectations
 - Blocks B, C, and D are still unbuilt
 - household semantics remain deferred to Milestone 2
 - save smoke expectations are defined, but feature passes still need to verify them as real gameplay state lands
@@ -43,9 +43,9 @@ Verify the implemented Block A shared starter strip and personal value loop agai
 - NPC commentary drifting into chatter instead of state-based consequence
 
 ## Immediate Reinforcement Moves
-- keep Block A limited to the current shared starter strip, personal inventory, crafting, sale, and coin flow only
-- use the current prototype accessibility layer only to keep the shared starter strip reachable for honest Block A verification
-- verify the implemented Block A loop in-engine before beginning Block B
+- keep Block A limited to the verified shared starter strip, personal inventory, crafting, sale, and coin flow only
+- keep the current prototype accessibility layer only as the minimum starter-area support needed for Block A and future Block B verification
+- begin Block B only after mapping each pass back to the Milestone 1 acceptance gate
 - keep personal and civic authorities singular and explicit
 - verify the Milestone 1 save smoke expectations as each block becomes real
 
@@ -58,12 +58,10 @@ Verify the implemented Block A shared starter strip and personal value loop agai
 - framework-heavy or UI-polish work
 
 ## Approved Next Baby Steps
-1. rerun in-engine verification on a fresh world now that the shared starter strip has a fixed safe starter area
-2. run in-engine verification for Block A `apple source / pickup`
-3. run in-engine verification for Block A `pie recipe / crafting`
-4. run in-engine verification for Block A `pie sale / coin earning`
-5. verify Block A against `docs/production/milestone_1_checklist.md` and `docs/design/milestone_1_acceptance_criteria.md`
-6. do not begin Block B until Block A exit conditions are true
+1. implement Block B `apple tree purchase`
+2. implement Block B `recurring tree yield`
+3. verify Block B exit condition before Block C
+4. do not begin Block C until Block B exit conditions are true
 
 ## Read This Before You Touch...
 ### Code

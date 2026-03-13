@@ -9,10 +9,8 @@ The Milestone 1 readiness lock is now in place. Do not create more foundation ta
 Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, and `docs/design/milestone_1_acceptance_criteria.md`.
 
 ### Block A - Mechanical Value Loop
-1. verify apple source / pickup in-engine
-2. verify pie recipe / crafting in-engine
-3. verify pie sale / coin earning in-engine
-4. verify Block A exit condition before Block B
+- verified end-to-end in-engine on 2026-03-13
+- keep frozen at current scope while Block B begins
 
 ### Block B - Productive Ownership
 1. implement apple tree purchase
