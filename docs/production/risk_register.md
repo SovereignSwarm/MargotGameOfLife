@@ -49,10 +49,10 @@ Notes:
 - **Likelihood**: High
 - **Impact**: High
 - **Detection**: Moderate
-- **Status**: Active
+- **Status**: Watch
 - **Early Warning Signs**: IDs renamed to "read better"; display names used as references; mismatched doc and data identifiers.
 - **Likely Trigger Point**: first serious content cleanup or first playable save
-- **Prevention Now**: review and freeze slice IDs before durable saves; use `id_policy.md` as the single naming authority
+- **Prevention Now**: use the frozen starter slice table in `id_policy.md` and gate new Milestone 1 work through `milestone_1_checklist.md`
 - **Containment If Triggered**: stop further renames; restore old IDs or add deprecation plus explicit migration before more content lands
 - **Owner / Watcher**: Human Owner, Save Watcher
 
@@ -63,10 +63,10 @@ Notes:
 - **Likelihood**: High
 - **Impact**: High
 - **Detection**: Easy
-- **Status**: Active
+- **Status**: Watch
 - **Early Warning Signs**: similar content uses different fields; ad hoc fields appear; required fields are skipped silently
 - **Likely Trigger Point**: first new content pass beyond the starter set
-- **Prevention Now**: align the first content records to `content_schema_reference.md` before content volume grows
+- **Prevention Now**: use `content_schema_reference.md` plus `milestone_1_checklist.md` before changing starter records
 - **Containment If Triggered**: pause new content additions and normalize existing records first
 - **Owner / Watcher**: Schema Watcher, Runtime Watcher
 
@@ -77,10 +77,10 @@ Notes:
 - **Likelihood**: High
 - **Impact**: High
 - **Detection**: Moderate
-- **Status**: Active
+- **Status**: Watch
 - **Early Warning Signs**: systems read or write across player, household, and civic state without clear rules; personal state access depends on world blobs
 - **Likely Trigger Point**: implementing sell, buy, contribute, and first shared-state features
-- **Prevention Now**: keep player, household, and civic write paths explicit and review runtime boundary assumptions before feature work expands
+- **Prevention Now**: keep player, household, and civic write paths explicit under `save_compatibility_policy.md` and `milestone_1_ownership_semantics.md`
 - **Containment If Triggered**: freeze new state fields; map current ownership of every saved field; isolate leaked responsibilities before continuing
 - **Owner / Watcher**: Runtime Watcher, Save Watcher
 
@@ -91,10 +91,10 @@ Notes:
 - **Likelihood**: High
 - **Impact**: High
 - **Detection**: Moderate
-- **Status**: Active
+- **Status**: Watch
 - **Early Warning Signs**: the same asset or place changes scope without rule; docs and runtime disagree about who owns or benefits
 - **Likely Trigger Point**: tree ownership, bridge contribution logic, and especially Milestone 2 household work
-- **Prevention Now**: define scope semantics before household implementation and treat ownership-layer review as mandatory
+- **Prevention Now**: use `milestone_1_ownership_semantics.md` and `milestone_1_checklist.md` as the current scope authority before feature work
 - **Containment If Triggered**: block household-scope changes until semantics and save impact are explicit
 - **Owner / Watcher**: Human Owner, Slice Watcher
 
@@ -203,10 +203,10 @@ Notes:
 - **Likelihood**: High
 - **Impact**: High
 - **Detection**: Moderate
-- **Status**: Active
+- **Status**: Watch
 - **Early Warning Signs**: live saves created before smoke checks; version fields exist but are not actively reviewed; save-impacting changes land without migration notes
 - **Likely Trigger Point**: first playable runtime that writes meaningful world and player state
-- **Prevention Now**: smoke-test save/load and migration entry points before any save is treated as durable
+- **Prevention Now**: use the Milestone 1 smoke expectations in `save_compatibility_policy.md` before any save is treated as durable
 - **Containment If Triggered**: mark early saves disposable; freeze save-impacting changes; add migration discipline before expanding feature work
 - **Owner / Watcher**: Save Watcher, Runtime Watcher
 
@@ -241,12 +241,12 @@ Notes:
 - Trust or reputation semantics drifting without save discipline
 - Wonder-tier readability collapsing under Systems-tier mechanics
 
-## Problems To Solve Now, Not Later
-- tighten the first content records against `content_schema_reference.md`
-- use `docs/design/milestone_1_acceptance_criteria.md` as the implementation gate before Milestone 1 implementation passes
-- lock explicit personal, household, and civic ownership semantics before Milestone 2
-- smoke-test save/load plus migration entry points before first durable saves
-- review and freeze the starter canonical IDs before feature work makes them expensive to change
+## Current Reinforcement Priorities
+- use `docs/production/milestone_1_checklist.md` and `docs/design/milestone_1_acceptance_criteria.md` before every Milestone 1 implementation pass
+- follow `docs/production/milestone_1_implementation_order.md` instead of convenience-driven sequencing
+- keep `player_state.coins` and `player_state.owned_assets` as the only Milestone 1 personal authorities for money and tree ownership
+- verify the save smoke expectations in `save_compatibility_policy.md` as each implementation block lands
+- preserve the frozen starter IDs in `id_policy.md`
 
 ## Decision Gates Tied To Risk
 ### Before Adding New Content

@@ -6,24 +6,29 @@ These docs control change during inception and early pre-production. Use them to
 ## Start Here
 - Read `current_state.md` first for the active milestone, current priority, top active risks, and approved next baby steps.
 - Then read `codex_workflow.md` for the repo-specific Codex execution contract.
+- If you are implementing Orchard and Bridge, then read `milestone_1_implementation_order.md` and `milestone_1_checklist.md` before feature work begins.
 
 ## Production Reading Order
 1. `current_state.md`
 2. `codex_workflow.md`
-3. `development_operating_model.md`
-4. `risk_register.md`
-5. `roadmap.md`
-6. `production_scale_phase_plan.md`
-7. `backlog.md`
-8. `decision_log.md`
-9. `id_policy.md`
-10. `save_compatibility_policy.md`
-11. `content_schema_reference.md`
-12. `title_strategy.md`
+3. `milestone_1_implementation_order.md`
+4. `milestone_1_checklist.md`
+5. `development_operating_model.md`
+6. `risk_register.md`
+7. `roadmap.md`
+8. `production_scale_phase_plan.md`
+9. `backlog.md`
+10. `decision_log.md`
+11. `id_policy.md`
+12. `save_compatibility_policy.md`
+13. `content_schema_reference.md`
+14. `title_strategy.md`
 
 ## What Each Doc Controls
 - `current_state.md`: the active milestone, current priority, what is ready, what is not ready, and the next valid steps
 - `codex_workflow.md`: the repo-specific Codex read order, output contract, and post-task sync rule
+- `milestone_1_implementation_order.md`: the approved Orchard and Bridge build sequence
+- `milestone_1_checklist.md`: the readiness, build, and review gate for Milestone 1 implementation
 - `development_operating_model.md`: how ideas move from docs to implementation without drift
 - `risk_register.md`: the active failure modes, early warning signs, and reinforcement priorities
 - `roadmap.md`: milestone intent, banned scope, and proof of success

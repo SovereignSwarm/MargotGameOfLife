@@ -23,6 +23,8 @@ The repo can add new content without renaming core concepts or rethinking save s
 ### Objective
 Prove the smallest complete loop of production, saving, productive ownership, and civic contribution.
 
+Use `docs/production/milestone_1_implementation_order.md` and `docs/production/milestone_1_checklist.md` when implementation begins.
+
 ### Must-have Outcomes
 - gather apples
 - craft pies

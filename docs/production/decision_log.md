@@ -44,3 +44,23 @@
 - Status: Accepted
 - Decision: Codex should follow an explicit repo workflow and every substantial task should end with a post-task documentation sync pass.
 - Consequence: use `docs/production/codex_workflow.md` as the Codex operating contract, and treat the sync pass as required work rather than optional cleanup.
+
+## 2026-03-13 ADR-010 Milestone 1 Coin Authority Is Singular
+- Status: Accepted
+- Decision: `player_state.coins` is the only spendable currency authority in Milestone 1, while `item/coin` remains a canonical content concept only.
+- Consequence: selling, buying, and contributing should read and write player coin balance directly; Milestone 1 must not create a second inventory-backed currency authority.
+
+## 2026-03-13 ADR-011 Milestone 1 Tree Ownership Authority Is Singular
+- Status: Accepted
+- Decision: `player_state.owned_assets` is the only ownership authority for `asset/apple_tree` in Milestone 1, while `item/tree_deed` remains non-authoritative if present.
+- Consequence: tree purchase, yield, save/load, and migrations must use `owned_assets` as the durable source of truth and must not infer ownership from a deed item.
+
+## 2026-03-13 ADR-012 Milestone 1 Uses Personal And Civic Scope Only
+- Status: Accepted
+- Decision: Milestone 1 Orchard and Bridge uses only personal and civic gameplay authority; household scope remains reserved for Milestone 2.
+- Consequence: co-op in Milestone 1 is one shared world with shared civic consequence plus separate personal inventories, coin balances, and tree ownership.
+
+## 2026-03-13 ADR-013 Milestone 1 Implementation Is Readiness-Gated And Ordered
+- Status: Accepted
+- Decision: Orchard and Bridge implementation must start with the locked readiness checklist and follow the approved block order from mechanical value to productive ownership to civic consequence to NPC reflection.
+- Consequence: Milestone 1 work should begin with Block A and should not pull later-block systems forward for convenience.

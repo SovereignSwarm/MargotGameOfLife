@@ -8,11 +8,12 @@ Money is not the goal. Money is fuel.
 - Read `docs/README.md` for the full docs map and authority order.
 - If you are working through Codex or Cursor, read `AGENTS.md` for the repo operating contract.
 - Then read `docs/production/current_state.md` for the active milestone, current priority, top risks, and approved next baby steps.
+- If you are implementing Orchard and Bridge, read `docs/design/milestone_1_ownership_semantics.md`, `docs/production/milestone_1_implementation_order.md`, `docs/production/milestone_1_checklist.md`, and `docs/design/milestone_1_acceptance_criteria.md` before coding.
 
 ## Current Milestone
 The repo is currently in `Milestone 0 - Canon and Repo Foundation`.
 
-The current focus is making `Milestone 1 - Orchard and Bridge` safe to implement by hardening IDs, schema consistency, ownership semantics, and save discipline, then implementing against the explicit Milestone 1 acceptance gate.
+The current focus is the locked Milestone 1 readiness layer for Orchard and Bridge: frozen starter IDs, explicit ownership semantics, save smoke expectations, approved implementation order, and the checklist gate that must be used before implementation begins.
 
 ## V1 Loop
 Build a tiny Luanti-based multiplayer prototype proving this loop:

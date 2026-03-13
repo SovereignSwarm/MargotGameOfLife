@@ -3,21 +3,31 @@
 This backlog is intentionally near-term. It turns the roadmap and risk register into the next valid steps without duplicating long-range planning.
 
 ## Milestone 0 - Canon and Repo Foundation
-1. review and freeze starter canonical IDs for Orchard and Bridge
-2. align starter item, recipe, asset, place, project, and NPC records to `content_schema_reference.md`
-3. use `docs/design/milestone_1_acceptance_criteria.md` as the implementation gate for each Milestone 1 feature
-4. add a save/load smoke check for world state, player state, version round-trips, and migration entry points
-5. lock explicit personal, household, and civic ownership semantics for the current slice and Milestone 2 prep
+The Milestone 1 readiness lock is now in place. Do not create more foundation tasks unless a new blocking structural risk appears.
 
 ## Milestone 1 - Orchard and Bridge
-Milestone 1 stays gated by the Milestone 0 reinforcement work above and by `docs/design/milestone_1_acceptance_criteria.md`.
+Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, and `docs/design/milestone_1_acceptance_criteria.md`.
 
-1. implement apple source and pickup flow
-2. implement pie crafting at the crafting station
-3. implement pie selling at the market stall
-4. implement apple tree purchase and recurring yield
-5. implement bridge contribution, staged progress, and completion
-6. implement baker and builder commentary as requests and reactions, not exposition
+### Block A - Mechanical Value Loop
+1. implement apple source / pickup
+2. implement pie recipe / crafting
+3. implement pie sale / coin earning
+4. verify Block A exit condition before Block B
+
+### Block B - Productive Ownership
+1. implement apple tree purchase
+2. implement recurring tree yield
+3. verify Block B exit condition before Block C
+
+### Block C - Civic Consequence
+1. implement bridge contribution
+2. implement bridge stage progression
+3. implement bridge completion outcome
+4. verify Block C exit condition before Block D
+
+### Block D - Reflective Social Layer
+1. implement basic baker commentary
+2. implement basic builder commentary
 
 ## Milestone 2 - Shared Household Layer Prep
 1. define which current assets and places may become household scope later

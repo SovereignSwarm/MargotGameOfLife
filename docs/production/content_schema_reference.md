@@ -8,6 +8,11 @@ This is a compact design-facing reference for early content tables. It defines t
 - keep display names separate from IDs
 - prefer optional fields and safe defaults over one-off record shapes
 
+## Authority Clarification
+- Content records may describe visible concepts such as `item/coin` and `item/tree_deed`.
+- Spendable balances and ownership ledgers must still name one authoritative saved state.
+- Do not let a content record imply a second currency authority or a second ownership authority unless the save policy explicitly permits it.
+
 ## Item
 Required:
 - `id`

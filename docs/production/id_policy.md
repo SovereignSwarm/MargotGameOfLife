@@ -54,5 +54,24 @@ If a rename becomes unavoidable:
 - `npc/baker`
 - `place/orchard`
 
+## Milestone 1 Starter Slice
+| Category | Canonical ID | Notes |
+| --- | --- | --- |
+| starter item | `item/apple` | starter gathered fruit |
+| starter item | `item/flour` | starter baking input |
+| starter item | `item/pie` | starter crafted sale good |
+| starter item | `item/coin` | canonical currency concept only; Milestone 1 spendable authority lives in player coin state |
+| starter item | `item/tree_deed` | starter deed concept only; Milestone 1 tree ownership authority lives in `owned_assets` |
+| starter recipe | `recipe/pie` | starter recipe |
+| starter asset | `asset/apple_tree` | the only starter productive asset; there is no separate orchard-source starter asset beyond this tree |
+| starter place | `place/orchard` | starter apple source place |
+| starter place | `place/crafting_station` | starter craft place |
+| starter place | `place/market_stall` | starter sale place |
+| starter place | `place/bridge_site` | starter civic project site |
+| starter place | `place/bridge` | starter completed civic outcome place |
+| starter project | `project/bridge_01` | starter civic project |
+| starter NPC | `npc/baker` | starter craft feedback NPC |
+| starter NPC | `npc/builder` | starter civic feedback NPC |
+
 ## Engine Names
 Engine-facing identifiers may be derived later for Luanti integration, but they should not replace canonical IDs in design docs or saved content references.

@@ -19,7 +19,7 @@ Codex should execute inside a stable repo operating model, not improvise project
 - changing roadmap direction or milestone boundaries
 - changing ownership semantics across personal, household, and civic scope
 - changing save-shape meaning or migration policy by implication instead of explicit review
-- resolving the open `player coins` versus `item/coin` concept boundary without deliberate design treatment
+- changing the locked Milestone 1 `player_state.coins` or `player_state.owned_assets` authority boundaries without explicit review
 - making any scope-expanding decision that changes project truth rather than implementing it
 
 ## Standard Codex Task Types
@@ -41,8 +41,11 @@ Default first read:
 7. `docs/canon/core_ontology.md`
 8. `docs/design/v1_vertical_slice.md`
 9. `docs/design/architecture.md`
-10. `docs/design/milestone_1_acceptance_criteria.md` when touching Milestone 1 implementation
-11. task-specific production docs after that
+10. `docs/design/milestone_1_ownership_semantics.md` when touching Orchard and Bridge semantics
+11. `docs/production/milestone_1_implementation_order.md` when touching Milestone 1 implementation
+12. `docs/production/milestone_1_checklist.md` when touching Milestone 1 implementation
+13. `docs/design/milestone_1_acceptance_criteria.md` when touching Milestone 1 implementation
+14. task-specific production docs after that
 
 Task-specific read paths:
 
@@ -51,6 +54,9 @@ Task-specific read paths:
 - `docs/production/codex_workflow.md`
 - `docs/design/v1_vertical_slice.md`
 - `docs/design/architecture.md`
+- `docs/design/milestone_1_ownership_semantics.md`
+- `docs/production/milestone_1_implementation_order.md`
+- `docs/production/milestone_1_checklist.md`
 - `docs/design/milestone_1_acceptance_criteria.md`
 - `docs/production/development_operating_model.md`
 - `docs/production/risk_register.md`
@@ -60,6 +66,7 @@ Task-specific read paths:
 - `docs/production/codex_workflow.md`
 - `docs/production/id_policy.md`
 - `docs/production/save_compatibility_policy.md`
+- `docs/production/milestone_1_checklist.md`
 - `docs/design/architecture.md`
 - `docs/production/risk_register.md`
 
@@ -70,6 +77,7 @@ Task-specific read paths:
 - `docs/canon/core_ontology.md`
 - `docs/canon/society_constitution.md`
 - `docs/design/architecture.md`
+- `docs/design/milestone_1_ownership_semantics.md`
 - `docs/production/risk_register.md`
 
 ### Content Additions
@@ -93,6 +101,8 @@ Task-specific read paths:
 - `docs/production/codex_workflow.md`
 - `docs/production/roadmap.md`
 - `docs/production/production_scale_phase_plan.md`
+- `docs/production/milestone_1_implementation_order.md`
+- `docs/production/milestone_1_checklist.md`
 - `docs/production/backlog.md`
 - `docs/production/risk_register.md`
 - `docs/production/development_operating_model.md`
@@ -136,6 +146,7 @@ Use `.agents/skills/post_task_doc_sync/SKILL.md` when the task fits that workflo
 - Never improvise project truth from memory or chat alone.
 - Never start code from partial context.
 - Never silently decide open ownership, save, or economy-boundary questions in runtime code.
+- Never skip the Milestone 1 readiness layer when working on Orchard and Bridge.
 - Never treat Milestone 1 work as done without `docs/design/milestone_1_acceptance_criteria.md`.
 - Never finish a substantial task without a post-task documentation sync pass.
 

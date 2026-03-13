@@ -20,7 +20,8 @@ You are working on MargotGameOfLife, a parent-child co-op village life sim built
 6. `docs/canon/core_ontology.md`
 7. `docs/design/v1_vertical_slice.md`
 8. `docs/design/architecture.md`
-9. Read task-specific docs before changing anything risky.
+9. `docs/design/milestone_1_ownership_semantics.md` when working on Orchard and Bridge semantics
+10. Read task-specific docs before changing anything risky.
 
 ## Read By Task
 ### Before Changing Code
@@ -28,6 +29,9 @@ You are working on MargotGameOfLife, a parent-child co-op village life sim built
 - `docs/production/codex_workflow.md`
 - `docs/design/v1_vertical_slice.md`
 - `docs/design/architecture.md`
+- `docs/design/milestone_1_ownership_semantics.md`
+- `docs/production/milestone_1_implementation_order.md`
+- `docs/production/milestone_1_checklist.md`
 - `docs/design/milestone_1_acceptance_criteria.md`
 - `docs/production/development_operating_model.md`
 - `docs/production/risk_register.md`
@@ -37,6 +41,7 @@ You are working on MargotGameOfLife, a parent-child co-op village life sim built
 - `docs/production/codex_workflow.md`
 - `docs/production/id_policy.md`
 - `docs/production/save_compatibility_policy.md`
+- `docs/production/milestone_1_checklist.md`
 - `docs/design/architecture.md`
 - `docs/production/risk_register.md`
 
@@ -55,6 +60,7 @@ You are working on MargotGameOfLife, a parent-child co-op village life sim built
 - `docs/canon/core_ontology.md`
 - `docs/canon/society_constitution.md`
 - `docs/design/architecture.md`
+- `docs/design/milestone_1_ownership_semantics.md`
 - `docs/production/risk_register.md`
 
 ### Before Proposing Lore Expansion
@@ -69,6 +75,8 @@ You are working on MargotGameOfLife, a parent-child co-op village life sim built
 - `docs/production/codex_workflow.md`
 - `docs/production/roadmap.md`
 - `docs/production/production_scale_phase_plan.md`
+- `docs/production/milestone_1_implementation_order.md`
+- `docs/production/milestone_1_checklist.md`
 - `docs/production/backlog.md`
 - `docs/production/risk_register.md`
 - `docs/production/development_operating_model.md`
@@ -99,6 +107,7 @@ Every implementation pass should report:
 ## Hard Rules
 - If the required docs were not read, do not implement.
 - Stay inside the current milestone and active priority in `docs/production/current_state.md`.
+- For Orchard and Bridge implementation, start with Block A in `docs/production/milestone_1_implementation_order.md` and gate every pass through `docs/production/milestone_1_checklist.md`.
 - For Milestone 1 implementation, use `docs/design/milestone_1_acceptance_criteria.md` as the completion gate.
 - After any substantial design, production, architecture, or implementation task, perform a post-task documentation sync pass before treating the work as complete.
 - Use `.agents/skills/post_task_doc_sync/SKILL.md` for the sync pass when the task fits that workflow.

@@ -9,6 +9,13 @@ This policy exists to keep early saves from becoming disposable by accident. It 
 
 Both versions start small, but both must be tracked deliberately.
 
+## Milestone 1 Baseline
+- `save_version = 1` and `content_version = 1` remain the current baseline for Orchard and Bridge.
+- Per-player persistence is the only durable personal-state authority in Milestone 1.
+- `world_state.civic.project_funds`, `world_state.civic.project_stages`, and `world_state.civic.unlocked_places` are the civic-state authorities in Milestone 1.
+- `world_state.household` stays reserved and unused by Milestone 1 gameplay authority.
+- `world_state.players` stays reserved and non-authoritative for Milestone 1.
+
 ## Baseline Rules
 - Bump `save_version` when serialized state structure or meaning changes.
 - Bump `content_version` when long-lived content definitions change in ways that active saves may care about.
@@ -27,6 +34,13 @@ If an old save cannot be loaded without guesswork, the change is breaking.
 - Prefer a chain of small migrations over one opaque rewrite.
 - No migration should silently discard meaningful player, household, or civic state.
 - Content migrations and save-shape migrations should stay distinct when possible.
+
+## Milestone 1 Smoke Expectations
+- state round-trip: a fresh player state and world state can be saved and loaded without structural drift
+- version round-trip: `save_version` and `content_version` survive save/load on both player and world state
+- migration entry point exists: both world and player loads pass through the migration layer before use
+- personal vs civic state remains distinct: personal inventory, coins, and owned assets do not become civic state, and civic bridge state does not become personal state
+- starter slice load requires no guesswork: frozen IDs, coin authority, tree ownership authority, and civic project paths are explicit on load
 
 ## Renaming and Deprecating IDs
 - Never casually rename long-lived canonical IDs.

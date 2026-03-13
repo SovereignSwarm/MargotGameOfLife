@@ -8,11 +8,17 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - If you are working through Codex or Cursor, read `AGENTS.md` next.
 - Then read `docs/production/current_state.md` for the active milestone, current priority, top risks, and approved next baby steps.
 - Then read `docs/production/codex_workflow.md` for the repo-specific Codex execution contract.
+- If you are implementing Orchard and Bridge, then read `docs/design/milestone_1_ownership_semantics.md`, `docs/production/milestone_1_implementation_order.md`, `docs/production/milestone_1_checklist.md`, and `docs/design/milestone_1_acceptance_criteria.md`.
 
 ## Folder Meanings
 - `canon/`: permanent identity rules that should survive engine changes and years of additive growth.
 - `design/`: the current playable expression of the canon, including the active slice and runtime shape.
 - `production/`: operational docs for milestone control, risk, IDs, saves, schemas, and working discipline.
+
+## Milestone 1 Readiness Layer
+- `docs/design/milestone_1_ownership_semantics.md`: the locked Milestone 1 personal versus civic ownership rules.
+- `docs/production/milestone_1_implementation_order.md`: the approved Orchard and Bridge feature sequence.
+- `docs/production/milestone_1_checklist.md`: the readiness, build, and review gate for Milestone 1 implementation.
 
 ## Current Reading Order
 1. `README.md`
@@ -30,18 +36,21 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 13. `docs/canon/lore_constitution.md`
 14. `docs/design/v1_vertical_slice.md`
 15. `docs/design/architecture.md`
-16. `docs/design/milestone_1_acceptance_criteria.md`
-17. `docs/production/README.md`
-18. `docs/production/development_operating_model.md`
-19. `docs/production/risk_register.md`
-20. `docs/production/roadmap.md`
-21. `docs/production/production_scale_phase_plan.md`
-22. `docs/production/backlog.md`
-23. `docs/production/decision_log.md`
-24. `docs/production/id_policy.md`
-25. `docs/production/save_compatibility_policy.md`
-26. `docs/production/content_schema_reference.md`
-27. `docs/production/title_strategy.md`
+16. `docs/design/milestone_1_ownership_semantics.md`
+17. `docs/design/milestone_1_acceptance_criteria.md`
+18. `docs/production/README.md`
+19. `docs/production/milestone_1_implementation_order.md`
+20. `docs/production/milestone_1_checklist.md`
+21. `docs/production/development_operating_model.md`
+22. `docs/production/risk_register.md`
+23. `docs/production/roadmap.md`
+24. `docs/production/production_scale_phase_plan.md`
+25. `docs/production/backlog.md`
+26. `docs/production/decision_log.md`
+27. `docs/production/id_policy.md`
+28. `docs/production/save_compatibility_policy.md`
+29. `docs/production/content_schema_reference.md`
+30. `docs/production/title_strategy.md`
 
 ## Read By Task
 ### Changing Code
@@ -49,6 +58,9 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - `docs/production/codex_workflow.md`
 - `docs/design/v1_vertical_slice.md`
 - `docs/design/architecture.md`
+- `docs/design/milestone_1_ownership_semantics.md`
+- `docs/production/milestone_1_implementation_order.md`
+- `docs/production/milestone_1_checklist.md`
 - `docs/design/milestone_1_acceptance_criteria.md`
 - `docs/production/development_operating_model.md`
 - `docs/production/risk_register.md`
@@ -58,6 +70,7 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - `docs/production/codex_workflow.md`
 - `docs/production/id_policy.md`
 - `docs/production/save_compatibility_policy.md`
+- `docs/production/milestone_1_checklist.md`
 - `docs/design/architecture.md`
 - `docs/production/risk_register.md`
 
@@ -72,6 +85,7 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - `docs/canon/core_ontology.md`
 - `docs/canon/society_constitution.md`
 - `docs/design/architecture.md`
+- `docs/design/milestone_1_ownership_semantics.md`
 - `docs/production/risk_register.md`
 
 ### Lore Or World Expansion
@@ -86,6 +100,8 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - `docs/production/current_state.md`
 - `docs/production/codex_workflow.md`
 - `docs/production/production_scale_phase_plan.md`
+- `docs/production/milestone_1_implementation_order.md`
+- `docs/production/milestone_1_checklist.md`
 - `docs/production/backlog.md`
 - `docs/production/development_operating_model.md`
 - `docs/production/risk_register.md`

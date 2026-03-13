@@ -11,6 +11,11 @@ Milestone 1 does not define later districts, household gameplay, judgment or inf
 ## Core Rule
 Milestone 1 is done only when the slice is mechanically correct, child-legible, co-op-legible, and structurally safe for future growth.
 
+## Required Companion Docs
+- `docs/design/milestone_1_ownership_semantics.md`
+- `docs/production/milestone_1_implementation_order.md`
+- `docs/production/milestone_1_checklist.md`
+
 ## Milestone 1 Feature List
 - apple source / pickup
 - pie recipe / crafting
@@ -59,7 +64,7 @@ Each feature entry below is a gate, not a brainstorm. Every entry must define:
 ### Pie Sale / Coin Earning
 - **Goal**: Let the player sell pie at `place/market_stall` and earn spendable coin state.
 - **Player-facing behavior**: A player can exchange `item/pie` for increased player coin state.
-- **Required inputs/state**: `place/market_stall`, `item/pie`, player `coins`, and the `item/coin` content concept.
+- **Required inputs/state**: `place/market_stall`, `item/pie`, player `coins`, and the `item/coin` content concept where `player_state.coins` remains the sole spendable authority.
 - **Ownership scope**: Pie is personal before sale; earned coin state is personal after sale.
 - **Visible consequence**: Pie leaves inventory and the player's coins increase in a way the player can see and use later.
 - **Save impact**: Inventory reduction and coin increase must both persist across save/load.
@@ -69,7 +74,7 @@ Each feature entry below is a gate, not a brainstorm. Every entry must define:
 ### Apple Tree Purchase
 - **Goal**: Let the player spend coins to acquire personal ownership of `asset/apple_tree`.
 - **Player-facing behavior**: A player who can afford the tree can buy it and unlock a future-yield path.
-- **Required inputs/state**: `asset/apple_tree`, `item/tree_deed`, player `coins`, personal `owned_assets`, current asset cost from content data.
+- **Required inputs/state**: `asset/apple_tree`, optional `item/tree_deed`, player `coins`, personal `owned_assets`, and current asset cost from content data where `player_state.owned_assets` remains the sole ownership authority.
 - **Ownership scope**: Personal only in Milestone 1.
 - **Visible consequence**: Coins go down, the player gains clear ownership of the tree, and the tree now matters for later yield.
 - **Save impact**: Coin reduction and owned asset state must persist across save/load; any `item/tree_deed` state used must be explicit and save-safe.
@@ -140,6 +145,9 @@ Each feature entry below is a gate, not a brainstorm. Every entry must define:
 - Canonical IDs are used consistently across doc, data, runtime references, and saves.
 - Starter records align to `content_schema_reference.md` before features claim done.
 - Ownership scope is explicit for every feature and never implied.
+- `player_state.coins` is the only spendable coin authority in Milestone 1, while `item/coin` remains a content concept only.
+- `player_state.owned_assets` is the only ownership authority for `asset/apple_tree` in Milestone 1, while `item/tree_deed` is non-authoritative if present.
+- Implementation order follows `docs/production/milestone_1_implementation_order.md`, and every implementation pass is gated by `docs/production/milestone_1_checklist.md`.
 - Save/load does not require guesswork about player, household, or civic state.
 - Visible world response exists across the slice, not just internal counters.
 - Parent-child co-op remains legible in one shared world.
@@ -159,6 +167,8 @@ Each feature entry below is a gate, not a brainstorm. Every entry must define:
 
 ## Save and Migration Checks
 - A fresh load with no prior save produces valid player and world state.
+- Per-player persistence is the durable authority for personal inventory, coin balance, and owned assets.
+- `world_state.civic.project_funds`, `project_stages`, and `unlocked_places` are the durable authorities for civic bridge state.
 - Milestone 1 flows preserve the relevant state on reload:
   - player inventory
   - player coins

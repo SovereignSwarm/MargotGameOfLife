@@ -35,12 +35,14 @@ function persistence.save_world_state(world_state)
 end
 
 function persistence.load_player_state(player_id)
+    -- Milestone 1 durable personal state lives in per-player persistence, not in world_state.players.
     local loaded_state = deserialize(storage:get_string(player_storage_key(player_id)))
     loaded_state = margot.runtime.migrations.migrate_player_state(loaded_state, player_id)
     return margot.runtime.state.ensure_player_state_shape(loaded_state, player_id)
 end
 
 function persistence.save_player_state(player_id, player_state)
+    -- Keep personal authority singular and save-safe by writing player state through the per-player key only.
     local prepared_state = margot.runtime.state.copy_player_state(player_state, player_id)
     prepared_state = margot.runtime.migrations.migrate_player_state(prepared_state, player_id)
 
