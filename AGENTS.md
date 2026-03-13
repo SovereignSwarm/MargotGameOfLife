@@ -2,80 +2,67 @@ This file matters a lot. It is your repo brain for Codex/Cursor.
 
 # AGENTS.md
 
-## Project role
+## Project Role
 You are working on MargotGameOfLife, a parent-child co-op village life sim built for Luanti.
 
-## Read order
-- Read `docs/README.md` first.
-- Then read canon docs before design or production docs.
+## Authority
+- `docs/canon/game_constitution.md` is the highest design authority.
+- Canon beats design.
+- Design beats runtime placeholders.
+- Production governs IDs, saves, risk, and implementation discipline.
 
-## Canonical design authority
-- `docs/canon/game_constitution.md` is the permanent conceptual source of truth.
-- If another design doc conflicts with it, the constitution wins.
-- Grow the game additively by instantiating its permanent verbs, entities, loop families, and ownership model rather than replacing them.
-- Use `docs/production/` for roadmap, backlog, ID policy, and save compatibility rules.
+## Required Read Order
+1. `docs/README.md`
+2. `docs/production/current_state.md`
+3. `docs/canon/game_constitution.md`
+4. `docs/canon/core_ontology.md`
+5. `docs/design/v1_vertical_slice.md`
+6. `docs/design/architecture.md`
+7. Read task-specific docs before changing anything risky.
 
-## Product goal
-Create a living world that teaches through play:
-- value creation
-- stewardship
-- critical thinking
-- trade-offs
-- ownership
-- craft mastery
-- visible society systems
-- long-term thinking
+## Read By Task
+### Before Changing Code
+- `docs/production/current_state.md`
+- `docs/design/v1_vertical_slice.md`
+- `docs/design/architecture.md`
+- `docs/production/development_operating_model.md`
+- `docs/production/risk_register.md`
 
-## Core design rule
-Money is fuel, not the goal.
-Every purchase must improve one or more of:
-- capability
-- beauty
-- status
-- freedom
-- shared life
+### Before Touching IDs, Saves, Or State
+- `docs/production/id_policy.md`
+- `docs/production/save_compatibility_policy.md`
+- `docs/design/architecture.md`
+- `docs/production/risk_register.md`
 
-## v1 scope
-Only build the smallest possible vertical slice proving:
-- apple gathering
-- pie crafting
-- selling for coins
-- saving
-- buying one productive asset (tree)
-- contributing to one shared bridge fund
-- visible village improvement
-- simple NPC commentary
+### Before Adding Content
+- `docs/canon/core_ontology.md`
+- `docs/production/content_schema_reference.md`
+- `docs/design/v1_vertical_slice.md`
+- `docs/production/backlog.md`
 
-## Hard constraints
-- Keep code small, readable, and modular.
-- Prefer data-driven definitions over hardcoded branching.
-- Do not add speculative systems.
-- Do not build features outside the current milestone unless required.
-- Do not introduce LLM-dependent runtime features.
-- Do not optimize for scale before the loop works.
-- Use placeholders freely.
+### Before Changing Ownership Or Co-op Semantics
+- `docs/canon/game_constitution.md`
+- `docs/canon/core_ontology.md`
+- `docs/canon/society_constitution.md`
+- `docs/design/architecture.md`
+- `docs/production/risk_register.md`
 
-## Coding style
-- Small files
-- Clear naming
-- Minimal abstraction
-- Avoid cleverness
-- Add comments only where they reduce ambiguity
-- Prefer deterministic gameplay systems
-- Keep multiplayer/state logic explicit
+### Before Proposing Lore Expansion
+- `docs/canon/lore_constitution.md`
+- `docs/canon/vision.md`
+- `docs/canon/game_constitution.md`
+- `docs/production/current_state.md`
 
-## Architecture rule
-Separate logic by domain:
-- items
-- crafting
-- economy
-- village progression
-- NPC reactions
-- player progression
+## Implementation Pass Output
+Every implementation pass should report:
 
-## Decision rule
-When unsure, choose the option that:
-1. makes the child-readable loop clearer
-2. makes the codebase easier for AI agents to modify
-3. reduces scope
-4. proves the product thesis faster
+- what changed
+- what docs were relied on
+- whether IDs, saves, or ownership scopes were affected
+- what remains unresolved or intentionally deferred
+
+## Hard Rules
+- If the required docs were not read, do not implement.
+- Stay inside the current milestone and active priority in `docs/production/current_state.md`.
+- Do not widen v1 scope, add speculative systems, or introduce runtime LLM features.
+- Keep code small, readable, and explicit. Prefer data-driven definitions and clear state boundaries.

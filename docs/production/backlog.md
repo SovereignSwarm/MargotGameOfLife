@@ -1,29 +1,30 @@
 # Backlog
 
+This backlog is intentionally near-term. It turns the roadmap and risk register into the next valid steps without duplicating long-range planning.
+
 ## Milestone 0 - Canon and Repo Foundation
-- align the first content records with `content_schema_reference.md`
-- add a small save/load smoke check for world state, player state, and migration entry points
-- review canonical IDs before the first playable save is treated as durable
+1. review and freeze starter canonical IDs for Orchard and Bridge
+2. align starter item, recipe, asset, place, project, and NPC records to `content_schema_reference.md`
+3. define acceptance criteria for each Milestone 1 feature before implementation
+4. add a save/load smoke check for world state, player state, version round-trips, and migration entry points
+5. lock explicit personal, household, and civic ownership semantics for the current slice and Milestone 2 prep
 
 ## Milestone 1 - Orchard and Bridge
-- implement the apple source and apple pickup flow
-- implement the pie recipe at the crafting station
-- implement selling pies for coins at the market stall
-- implement apple tree purchase and recurring yield
-- implement bridge contribution, staged world progress, and completion
-- implement simple baker and builder commentary tied to state
+Milestone 1 stays gated by the Milestone 0 reinforcement work above.
 
-## Milestone 2 - Shared Household Layer
-- define household storage and household-owned asset state
-- implement one household-level purchase or upgrade choice
-- surface personal vs household ownership clearly in play
+1. implement apple source and pickup flow
+2. implement pie crafting at the crafting station
+3. implement pie selling at the market stall
+4. implement apple tree purchase and recurring yield
+5. implement bridge contribution, staged progress, and completion
+6. implement baker and builder commentary as requests and reactions, not exposition
+
+## Milestone 2 - Shared Household Layer Prep
+1. define which current assets and places may become household scope later
+2. define the first required household-level trade-off before implementation
 
 ## Milestone 3 - First District Expansion
-- define the first new district in canon-safe terms
-- add one specialist, one asset chain, and one civic project in that district
-- preserve Orchard and Bridge as meaningful starter content
+- no active backlog items until Milestone 1 is proven
 
 ## Milestone 4 - First True Judgment / Information Loop
-- implement one hint or rumor path with incomplete information
-- implement one commission with conflicting advice
-- implement one trust or reputation shift with visible downstream consequence
+- no active backlog items until Milestone 1 is proven
