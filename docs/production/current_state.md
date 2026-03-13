@@ -6,10 +6,10 @@ This page is the operational orientation for the repo. Read it to see the active
 ## Current Milestone
 `Milestone 1 - Orchard and Bridge`
 
-Milestone 1 has now started. Block A has been verified end-to-end in-engine for the personal apple -> pie -> coin loop, and the next honest gate is starting Block B without widening scope.
+Milestone 1 has now started. Block A has been verified end-to-end in-engine for the personal apple -> pie -> coin loop, and Block B now exists in runtime in a minimal personal-ownership form. The next honest gate is a dedicated Block B verification pass before Block C begins.
 
 ## Current Priority
-Begin Block B only through `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, `docs/design/milestone_1_ownership_semantics.md`, and `docs/design/milestone_1_acceptance_criteria.md`. Keep Block A frozen at its verified personal value-loop scope while adding no later-phase semantics outside the approved order.
+Verify Block B only through `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, `docs/design/milestone_1_ownership_semantics.md`, and `docs/design/milestone_1_acceptance_criteria.md`. Keep Block A frozen, keep Block B narrow, and do not begin Block C until Block B exit conditions are honestly true.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -29,10 +29,14 @@ Begin Block B only through `docs/production/milestone_1_checklist.md`, `docs/pro
 - a prototype accessibility layer now fixes the Block A starter anchor at a safe shared platform, maps the missing starter-world mapgen aliases to inert substrate, and places fresh or obviously broken players at the starter area after bootstrap completes
 - Block A still keeps personal inventory and `player_state.coins` as the only personal authorities it touches
 - Block A has now been verified in-engine for starter-strip bootstrap, apple pickup, flour pickup, pie crafting success/failure, pie sale success/failure, save/load round-trip, and separate personal state for two players sharing the same civic strip
+- Block B now adds one shared starter-strip apple tree interaction surface that resolves to each player's own personal ownership and readiness state
+- Block B now records starter tree ownership only in `player_state.owned_assets["asset/apple_tree"]` and reads tree cost and apple yield from the existing asset definition
+- Block B purchase and recurring yield are now implemented, but not yet verified end-to-end in-engine
 
 ## What Is Not Ready Yet
 - the Orchard and Bridge slice is not yet fully implemented
-- Blocks B, C, and D are still unbuilt
+- Block B is not yet verified end-to-end against its exit condition
+- Blocks C and D are still unbuilt
 - household semantics remain deferred to Milestone 2
 - save smoke expectations are defined, but feature passes still need to verify them as real gameplay state lands
 
@@ -45,7 +49,7 @@ Begin Block B only through `docs/production/milestone_1_checklist.md`, `docs/pro
 ## Immediate Reinforcement Moves
 - keep Block A limited to the verified shared starter strip, personal inventory, crafting, sale, and coin flow only
 - keep the current prototype accessibility layer only as the minimum starter-area support needed for Block A and future Block B verification
-- begin Block B only after mapping each pass back to the Milestone 1 acceptance gate
+- verify Block B before any Block C implementation begins
 - keep personal and civic authorities singular and explicit
 - verify the Milestone 1 save smoke expectations as each block becomes real
 
@@ -58,9 +62,9 @@ Begin Block B only through `docs/production/milestone_1_checklist.md`, `docs/pro
 - framework-heavy or UI-polish work
 
 ## Approved Next Baby Steps
-1. implement Block B `apple tree purchase`
-2. implement Block B `recurring tree yield`
-3. verify Block B exit condition before Block C
+1. verify Block B `apple tree purchase`
+2. verify Block B `recurring tree yield` and save/load behavior
+3. verify two-player personal ownership isolation at the shared tree surface
 4. do not begin Block C until Block B exit conditions are true
 
 ## Read This Before You Touch...

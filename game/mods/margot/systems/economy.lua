@@ -41,6 +41,34 @@ function economy.can_afford_asset(player_state, asset_id)
     return true, nil
 end
 
+function economy.purchase_asset(player_state, asset_id, owned_asset_state)
+    if margot.data.assets[asset_id] == nil then
+        return nil, "unknown_asset"
+    end
+
+    if margot.systems.ownership.player_owns_personal_asset(player_state, asset_id) then
+        return nil, "already_owned"
+    end
+
+    local purchase_cost = economy.get_asset_purchase_cost(asset_id)
+    local allowed, reason = economy.can_afford_asset(player_state, asset_id)
+
+    if not allowed then
+        return nil, reason
+    end
+
+    local next_state = margot.runtime.state.copy_player_state(player_state)
+    next_state.coins = math.max(next_state.coins - (purchase_cost.coins or 0), 0)
+
+    next_state, reason = margot.systems.ownership.grant_personal_asset(next_state, asset_id, owned_asset_state)
+
+    if next_state == nil then
+        return nil, reason
+    end
+
+    return next_state, nil
+end
+
 function economy.apply_coin_delta(player_state, delta)
     local next_state = margot.runtime.state.copy_player_state(player_state)
     next_state.coins = math.max((next_state.coins or 0) + (delta or 0), 0)

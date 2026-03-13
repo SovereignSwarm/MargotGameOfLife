@@ -13,9 +13,11 @@ Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `
 - keep frozen at current scope while Block B begins
 
 ### Block B - Productive Ownership
-1. implement apple tree purchase
-2. implement recurring tree yield
-3. verify Block B exit condition before Block C
+- implemented in runtime on 2026-03-13 in a narrow personal-ownership form
+1. verify apple tree purchase
+2. verify recurring tree yield and save/load behavior
+3. verify two-player personal ownership isolation at the shared tree surface
+4. do not begin Block C until Block B exit condition is verified
 
 ### Block C - Civic Consequence
 1. implement bridge contribution
