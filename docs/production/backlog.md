@@ -20,10 +20,10 @@ Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `
 - keep frozen at current scope while Block C begins
 
 ### Block C - Civic Consequence
-1. implement bridge contribution
-2. implement bridge stage progression
-3. implement bridge completion outcome
-4. verify Block C exit condition before Block D
+- implemented in runtime on 2026-03-13 in a narrow civic-only form
+- one shared starter-strip bridge site now turns fixed 5-coin personal contributions into shared civic bridge state
+- bridge stages now progress from foundation to framing to complete from saved civic funds, and completion now unlocks the shared `place/bridge` outcome as a visible walkable span
+- dedicated Block C verification pass is required before Block D begins
 
 ### Block D - Reflective Social Layer
 1. implement basic baker commentary

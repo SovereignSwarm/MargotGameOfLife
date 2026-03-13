@@ -75,6 +75,24 @@ function economy.apply_coin_delta(player_state, delta)
     return next_state
 end
 
+function economy.spend_coins(player_state, amount)
+    local spend_amount = math.floor(tonumber(amount) or 0)
+
+    if spend_amount <= 0 then
+        return nil, "invalid_amount"
+    end
+
+    local next_state = margot.runtime.state.copy_player_state(player_state)
+
+    if next_state.coins < spend_amount then
+        return nil, "insufficient_coins"
+    end
+
+    next_state.coins = next_state.coins - spend_amount
+
+    return next_state, nil
+end
+
 function economy.sell_item_at_place(player_state, place_id, item_id, quantity)
     if margot.data.places[place_id] == nil then
         return nil, "unknown_place"

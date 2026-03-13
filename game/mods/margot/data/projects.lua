@@ -7,6 +7,7 @@ margot.data.projects = {
         default_scope = "civic",
         contribution_rules = {
             currency = "coins",
+            fixed_coin_amount = 5,
         },
         stages = {
             {
