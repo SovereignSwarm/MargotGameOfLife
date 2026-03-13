@@ -1,0 +1,16 @@
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Temporary files
+*.bak
+*.log
+*.tmp
+*.swp
+
+# Luanti local runtime data
+game/cache/
+game/screenshots/
+game/worlds/

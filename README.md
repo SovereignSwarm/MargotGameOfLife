@@ -2,7 +2,7 @@
 
 A private parent-child co-op village life sim where craft, saving, ownership, and civic contribution visibly shape the world over time.
 
-The permanent design rules for the project live in `docs/game_constitution.md`.
+Read `docs/README.md` first for the docs hierarchy and authority map. The permanent design rules live under `docs/canon/`.
 
 ## Core thesis
 Money is not the goal. Money is fuel.

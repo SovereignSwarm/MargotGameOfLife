@@ -1,0 +1,41 @@
+margot.data.places = {
+    ["place/orchard"] = {
+        id = "place/orchard",
+        display_name = "Orchard",
+        place_kind = "source",
+        summary = "The starter place for gathering apples.",
+        default_scope = "civic",
+        available_activity_ids = { "gather_apples" },
+    },
+    ["place/crafting_station"] = {
+        id = "place/crafting_station",
+        display_name = "Crafting Station",
+        place_kind = "workshop",
+        summary = "The basic baking place for turning ingredients into pies.",
+        default_scope = "civic",
+        available_activity_ids = { "recipe/pie" },
+    },
+    ["place/market_stall"] = {
+        id = "place/market_stall",
+        display_name = "Market Stall",
+        place_kind = "market",
+        summary = "The first trade node for selling pies.",
+        default_scope = "civic",
+        available_activity_ids = { "sell_pies" },
+    },
+    ["place/bridge_site"] = {
+        id = "place/bridge_site",
+        display_name = "Bridge Site",
+        place_kind = "project_site",
+        summary = "The public project site where the bridge visibly progresses.",
+        default_scope = "civic",
+        available_activity_ids = { "project/bridge_01" },
+    },
+    ["place/bridge"] = {
+        id = "place/bridge",
+        display_name = "Bridge",
+        place_kind = "access_structure",
+        summary = "The completed civic access structure unlocked by the bridge project.",
+        default_scope = "civic",
+    },
+}

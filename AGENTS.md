@@ -5,10 +5,15 @@ This file matters a lot. It is your repo brain for Codex/Cursor.
 ## Project role
 You are working on MargotGameOfLife, a parent-child co-op village life sim built for Luanti.
 
+## Read order
+- Read `docs/README.md` first.
+- Then read canon docs before design or production docs.
+
 ## Canonical design authority
-- `docs/game_constitution.md` is the permanent conceptual source of truth.
+- `docs/canon/game_constitution.md` is the permanent conceptual source of truth.
 - If another design doc conflicts with it, the constitution wins.
 - Grow the game additively by instantiating its permanent verbs, entities, loop families, and ownership model rather than replacing them.
+- Use `docs/production/` for roadmap, backlog, ID policy, and save compatibility rules.
 
 ## Product goal
 Create a living world that teaches through play:
