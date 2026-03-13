@@ -2,6 +2,8 @@
 
 A private parent-child co-op village life sim where craft, saving, ownership, and civic contribution visibly shape the world over time.
 
+The permanent design rules for the project live in `docs/game_constitution.md`.
+
 ## Core thesis
 Money is not the goal. Money is fuel.
 Players care about money because it unlocks beauty, tools, freedom, status, and the ability to improve shared life.
@@ -22,8 +24,9 @@ Build a tiny Luanti-based multiplayer prototype proving this loop:
 - no MMO
 - no public servers
 - no advanced AI NPCs
-- no inheritance systems yet
-- no taxes system yet
+- no inheritance mechanics
+- no tax systems
+- no abstract finance layers
 - no procedural society simulation
 - no polished art pipeline
 - no mobile-style retention loops

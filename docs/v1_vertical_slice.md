@@ -23,7 +23,7 @@ Orchard and Bridge
 - one sell interaction
 - coin tracking
 - one productive asset
-- one shared progress meter
+- one shared public project with visible in-world progress
 - one map change after bridge completion
 - one NPC feedback system
 

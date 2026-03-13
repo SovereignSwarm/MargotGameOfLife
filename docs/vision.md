@@ -20,13 +20,17 @@ The game should create the feeling:
 6. Legacy
 
 ## Design principle
-Each core mechanic should work at 3 levels:
-- sensory form
-- strategic form
-- philosophical form
+Each core mechanic should stay readable across the comprehension tiers defined in the constitution:
+- Wonder
+- Planning
+- Strategy
+- Systems
+- Legacy
 
 Example:
 Apple tree
-- sensory: pretty tree gives fruit every day
-- strategic: recurring source of income
-- philosophical: productive capital outlasts labor
+- wonder: pretty tree gives fruit every day
+- planning: save now to buy it later
+- strategy: recurring source of income changes better choices
+- systems: tree output affects craft, trade, and household planning
+- legacy: productive capital outlasts a single day of labor
