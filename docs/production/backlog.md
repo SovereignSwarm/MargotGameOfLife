@@ -51,7 +51,7 @@ Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `
 - keep frozen at current pantry-plus-reserve scope until the next Milestone 2 household step is explicitly documented
 
 ## Milestone 3 - First District Expansion
-- no active backlog items until the reserve-aware withdrawal step is honestly verified
+- no active backlog items until the next Milestone 2 household step is explicitly documented
 
 ## Milestone 4 - First True Judgment / Information Loop
-- no active backlog items until the reserve-aware withdrawal step is honestly verified
+- no active backlog items until the next Milestone 2 household step is explicitly documented

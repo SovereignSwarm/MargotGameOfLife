@@ -24,6 +24,7 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - `docs/design/household_pantry_contract.md`: the first-shape household pantry authority contract for explicit deposit, withdrawal, failure, and boundary rules in the active first Milestone 2 pantry shape.
 - `docs/production/milestone_2_first_shape_review.md`: the post-verification Milestone 2 decision anchor for what the first pantry shape proved and the next single household tension worth exploring.
 - `docs/design/household_reserve_contract.md`: the narrow reserve-rule contract for the next Milestone 2 household step after the first pantry shape review.
+- `docs/production/milestone_2_household_slice_closure.md`: the closure anchor for the verified pantry-plus-reserve household slice and the next single household question.
 
 ## Current Reading Order
 1. `README.md`
@@ -45,19 +46,20 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 17. `docs/design/milestone_1_acceptance_criteria.md`
 18. `docs/design/household_pantry_contract.md`
 19. `docs/design/household_reserve_contract.md`
-20. `docs/production/README.md`
-21. `docs/production/milestone_1_implementation_order.md`
-22. `docs/production/milestone_1_checklist.md`
-23. `docs/production/development_operating_model.md`
-24. `docs/production/risk_register.md`
-25. `docs/production/roadmap.md`
-26. `docs/production/production_scale_phase_plan.md`
-27. `docs/production/backlog.md`
-28. `docs/production/decision_log.md`
-29. `docs/production/id_policy.md`
-30. `docs/production/save_compatibility_policy.md`
-31. `docs/production/content_schema_reference.md`
-32. `docs/production/title_strategy.md`
+20. `docs/production/milestone_2_household_slice_closure.md`
+21. `docs/production/README.md`
+22. `docs/production/milestone_1_implementation_order.md`
+23. `docs/production/milestone_1_checklist.md`
+24. `docs/production/development_operating_model.md`
+25. `docs/production/risk_register.md`
+26. `docs/production/roadmap.md`
+27. `docs/production/production_scale_phase_plan.md`
+28. `docs/production/backlog.md`
+29. `docs/production/decision_log.md`
+30. `docs/production/id_policy.md`
+31. `docs/production/save_compatibility_policy.md`
+32. `docs/production/content_schema_reference.md`
+33. `docs/production/title_strategy.md`
 
 ## Read By Task
 ### Changing Code

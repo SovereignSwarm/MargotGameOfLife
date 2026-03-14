@@ -6,7 +6,7 @@ This page is the operational orientation for the repo. Read it to see the active
 ## Current Milestone
 `Milestone 2 - Shared Household Layer`
 
-Milestone 1 remains the frozen verified Orchard and Bridge baseline. Milestone 2 has now begun in one narrow verified form only: a first shared household pantry shape for apples and flour.
+Milestone 1 remains the frozen verified Orchard and Bridge baseline. Milestone 2 has now begun in one narrow verified form only: a shared household pantry slice for apples and flour plus reserve-aware withdrawal.
 
 ## Current Priority
 Keep the honestly verified first household pantry shape plus the honestly verified reserve-aware withdrawal step narrow and frozen. Do not widen into direct pantry baking, shared coins, shared tree ownership, civic rewrites, broader household systems, or household NPC commentary until the next Milestone 2 household step is explicitly documented and approved.
