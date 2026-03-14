@@ -45,18 +45,6 @@ local withdraw_surface_keys = {
     ["item/flour"] = "flour_withdraw",
 }
 
-local function get_item_label(item_id, amount)
-    if item_id == "item/apple" then
-        if amount == 1 then
-            return "apple"
-        end
-
-        return "apples"
-    end
-
-    return "flour"
-end
-
 local function add_pos(base, offset)
     return {
         x = base.x + offset.x,
@@ -73,6 +61,22 @@ local function get_item_display_name(item_id)
     end
 
     return item_definition.display_name
+end
+
+local function get_item_requirement_text(item_id, amount)
+    if item_id == "item/apple" then
+        if amount == 1 then
+            return "1 Apple"
+        end
+
+        return string.format("%d Apples", amount)
+    end
+
+    if item_id == "item/flour" then
+        return string.format("%d Flour", amount)
+    end
+
+    return string.format("%d %s", amount, get_item_display_name(item_id))
 end
 
 local function tell_player(player, message)
@@ -123,7 +127,7 @@ local function format_pantry_status(world_state)
     ), nil
 end
 
-local function format_reserve_status(world_state)
+local function format_house_purpose_status(world_state)
     local reserve_status, reason = margot.systems.household.get_pantry_reserve_status(world_state)
 
     if reserve_status == nil then
@@ -131,40 +135,49 @@ local function format_reserve_status(world_state)
     end
 
     if reserve_status.reserve_ready then
-        return "Reserve ready.", reserve_status, nil
+        return "House ready for later pie.", reserve_status, nil
     end
 
+    local missing_parts = {}
     local missing_apples = reserve_status.missing["item/apple"] or 0
     local missing_flour = reserve_status.missing["item/flour"] or 0
 
+    if missing_apples > 0 then
+        table.insert(missing_parts, get_item_requirement_text("item/apple", missing_apples))
+    end
+
+    if missing_flour > 0 then
+        table.insert(missing_parts, get_item_requirement_text("item/flour", missing_flour))
+    end
+
     return string.format(
-        "Reserve incomplete. Need %d %s and %d %s.",
-        missing_apples,
-        get_item_label("item/apple", missing_apples),
-        missing_flour,
-        get_item_label("item/flour", missing_flour)
+        "House not ready for later pie. Need %s.",
+        table.concat(missing_parts, " and ")
     ), reserve_status, nil
 end
 
-local function build_status_line(player_state, world_state)
+local function build_counts_line(player_state, world_state)
     local pantry_status, reason = format_pantry_status(world_state)
 
     if pantry_status == nil then
         return nil, reason
     end
 
-    local reserve_status_text
-    reserve_status_text, _, reason = format_reserve_status(world_state)
+    return format_personal_status(player_state) .. " | " .. pantry_status, nil
+end
 
-    if reserve_status_text == nil then
+local function build_action_summary_with_house_status(action_summary, world_state)
+    local house_status, _, reason = format_house_purpose_status(world_state)
+
+    if house_status == nil then
         return nil, reason
     end
 
-    return format_personal_status(player_state) .. " | " .. pantry_status .. " | " .. reserve_status_text, nil
+    return action_summary .. " " .. house_status, nil
 end
 
 local function report_result(player, summary, player_state, world_state)
-    local status_line, reason = build_status_line(player_state, world_state)
+    local status_line, reason = build_counts_line(player_state, world_state)
 
     if status_line == nil then
         tell_player(player, "The pantry is not ready.")
@@ -183,15 +196,15 @@ local function report_read(player, world_state)
         return reason
     end
 
-    local reserve_status_text
-    reserve_status_text, _, reason = format_reserve_status(world_state)
+    local house_status
+    house_status, _, reason = format_house_purpose_status(world_state)
 
-    if reserve_status_text == nil then
+    if house_status == nil then
         tell_player(player, "The pantry is not ready.")
         return reason
     end
 
-    tell_player(player, pantry_status .. " | " .. reserve_status_text)
+    tell_player(player, pantry_status .. " | " .. house_status)
     return nil
 end
 
@@ -225,7 +238,7 @@ local function report_failure(player, action, item_id, reason, player_state, wor
     local status_line = nil
 
     if action ~= "read" and player_state ~= nil and world_state ~= nil then
-        status_line = select(1, build_status_line(player_state, world_state))
+        status_line = select(1, build_counts_line(player_state, world_state))
     elseif action == "read" and world_state ~= nil then
         status_line = select(1, format_pantry_status(world_state))
     end
@@ -272,7 +285,7 @@ local function report_reserve_warning(player, item_id, player_state, world_state
     report_result(
         player,
         string.format(
-            "Reserve warning: the first click did not withdraw anything yet. Click this same %s withdraw surface again to break the reserve.",
+            "This will break the house pie set. Nothing taken yet. Tap again to take 1 %s.",
             get_item_display_name(item_id)
         ),
         player_state,
@@ -280,14 +293,18 @@ local function report_reserve_warning(player, item_id, player_state, world_state
     )
 end
 
-local function report_withdraw_result(player, item_id, player_state, world_state, mode)
-    local summary_by_mode = {
-        normal_ready = string.format("Withdrew 1 %s. Reserve ready.", get_item_display_name(item_id)),
-        normal_incomplete = string.format("Withdrew 1 %s. Reserve incomplete.", get_item_display_name(item_id)),
-        reserve_broken = string.format("Withdrew 1 %s. Reserve broken.", get_item_display_name(item_id)),
-    }
+local function report_withdraw_result(player, item_id, player_state, world_state)
+    local summary, reason = build_action_summary_with_house_status(
+        string.format("Took 1 %s.", get_item_display_name(item_id)),
+        world_state
+    )
 
-    report_result(player, summary_by_mode[mode] or string.format("Withdrew 1 %s.", get_item_display_name(item_id)), player_state, world_state)
+    if summary == nil then
+        report_failure(player, "withdraw", item_id, reason, player_state, world_state)
+        return
+    end
+
+    report_result(player, summary, player_state, world_state)
 end
 
 local function persist_deposit_states(player, next_player_state, next_world_state)
@@ -322,7 +339,17 @@ local function handle_deposit(player, item_id)
     end
 
     next_player_state, next_world_state = persist_deposit_states(player, next_player_state, next_world_state)
-    report_result(player, string.format("Deposited 1 %s.", get_item_display_name(item_id)), next_player_state, next_world_state)
+    local summary, summary_reason = build_action_summary_with_house_status(
+        string.format("Deposited 1 %s.", get_item_display_name(item_id)),
+        next_world_state
+    )
+
+    if summary == nil then
+        report_failure(player, "deposit", item_id, summary_reason, next_player_state, next_world_state)
+        return
+    end
+
+    report_result(player, summary, next_player_state, next_world_state)
 end
 
 local function handle_withdraw(player, item_id)
@@ -397,16 +424,16 @@ local function handle_withdraw(player, item_id)
     end
 
     if withdrawal_mode == "reserve_breaking" then
-        report_withdraw_result(player, item_id, next_player_state, next_world_state, "reserve_broken")
+        report_withdraw_result(player, item_id, next_player_state, next_world_state)
         return
     end
 
     if next_reserve_status.reserve_ready then
-        report_withdraw_result(player, item_id, next_player_state, next_world_state, "normal_ready")
+        report_withdraw_result(player, item_id, next_player_state, next_world_state)
         return
     end
 
-    report_withdraw_result(player, item_id, next_player_state, next_world_state, "normal_incomplete")
+    report_withdraw_result(player, item_id, next_player_state, next_world_state)
 end
 
 local function handle_read(player)

@@ -9,12 +9,14 @@ This page is the operational orientation for the repo. Read it to see the active
 Milestone 1 remains the frozen verified Orchard and Bridge baseline. Milestone 2 has now begun in one narrow verified form only: a shared household pantry slice for apples and flour plus reserve-aware withdrawal.
 
 ## Current Priority
-Keep the honestly verified pantry-plus-reserve household slice narrow and frozen. The next active work is planning/design only around one unresolved household-purpose question: what is the smallest durable reason to keep or rebuild one future pie set in household scope for us later instead of treating the pantry as temporary staging before personal baking? Do not widen into direct pantry baking, shared coins, shared tree ownership, civic rewrites, broader household systems, or household NPC commentary until that next Milestone 2 step is explicitly documented and approved.
+Keep the honestly verified pantry-plus-reserve household slice narrow and frozen. Household-purpose meaning from `docs/design/household_purpose_contract.md` now appears in runtime only as house-ready versus house-not-ready pantry messaging: keep one future pie set ready for later, and if that set is broken the house is not ready again until `2 apples + 1 flour` are rebuilt. Do not widen into direct pantry baking, shared coins, shared tree ownership, civic rewrites, broader household systems, or household NPC commentary.
 
 ## Current Planning Anchor
-The next Milestone 2 work is planning/design only, not runtime expansion.
+The active household-purpose anchor remains design-first even after this narrow runtime pass.
 
-Question: what is the smallest durable reason to keep or rebuild one future pie set in household scope for us later instead of treating the pantry as temporary staging before personal baking?
+Active anchor: `docs/design/household_purpose_contract.md`
+
+That contract now informs pantry read, deposit, withdraw, and reserve-break messaging only. It still does not authorize broader household expansion by itself.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -61,6 +63,9 @@ Question: what is the smallest durable reason to keep or rebuild one future pie 
 - surplus withdrawal remains normal, while a reserve-breaking withdrawal now requires explicit same-player same-surface confirmation before state changes
 - reserve-break confirmation is ephemeral runtime-only, clears on non-matching pantry interaction or leave, resets on relaunch, and is not saved as gameplay truth
 - reserve-aware withdrawal is now honestly verified end-to-end in-engine for reserve-ready read output, reserve-incomplete read output, normal surplus withdrawal, reserve-warning no-op behavior, reserve-break confirmation, confirmation reset on read, deposit, different withdraw surface, leave or rejoin, relaunch, co-op invalidation on changed pantry counts, and save-load neutrality
+- household-purpose messaging now makes the house being ready or not ready legible through pantry read plus existing deposit, withdraw, and reserve-break outputs only
+- house-ready meaning stays derived from pantry counts only; no saved purpose, readiness, debt, owner, or partner-claim field was added
+- the household-purpose messaging refinement is now honestly verified in-engine for ready read output, incomplete read output, reserve-warning clarity, reserve-break confirmation clarity, rebuild readability after deposit, co-op shared readability, and save-load neutrality
 - `save_version` is now `2` while `content_version` remains `1`
 
 ## What Is Not Ready Yet
@@ -73,7 +78,7 @@ Question: what is the smallest durable reason to keep or rebuild one future pie 
 - pantry transfer handlers being mistaken for a full transaction or rollback framework
 - AI tools drifting from repo truth
 - co-op readability slipping if reserve-warning and reserve-break messaging stop feeling obviously shared
-- Milestone 2 widening beyond the honestly verified reserve-aware withdrawal step before the next household meaning decision is explicitly documented
+- Milestone 2 widening beyond the honestly verified pantry-plus-reserve-plus-purpose-legibility step before a separate approved implementation pass is explicitly documented
 
 ## Immediate Reinforcement Moves
 - keep Blocks A, B, C, and D frozen at their verified Milestone 1 scope
@@ -99,8 +104,9 @@ Question: what is the smallest durable reason to keep or rebuild one future pie 
 ## Approved Next Baby Steps
 1. keep the verified pantry-plus-reserve household slice frozen at apples-and-flour-only runtime scope
 2. preserve Milestone 1 personal, civic, coin, tree, crafting, and NPC boundaries unchanged under the household pantry layer
-3. answer one planning/design question in docs before more runtime work lands: what is the smallest durable reason to keep or rebuild one future pie set in household scope for us later instead of treating the pantry as temporary staging before personal baking?
-4. do not begin broader household mechanics or wider Milestone 2 work from reserve-aware withdrawal alone
+3. use `docs/design/household_purpose_contract.md` as the active meaning anchor for why the household should keep or rebuild one future pie set in shared scope
+4. keep the house-ready versus house-not-ready messaging refinement derived from pantry counts only, with no new saved fields or gameplay authorities
+5. do not begin broader household mechanics or wider Milestone 2 work until a separate approved pass is documented
 
 ## Read This Before You Touch...
 ### Code
@@ -145,6 +151,7 @@ Question: what is the smallest durable reason to keep or rebuild one future pie 
 - `docs/production/milestone_2_first_shape_review.md`
 - `docs/design/household_pantry_contract.md`
 - `docs/design/household_reserve_contract.md`
+- `docs/design/household_purpose_contract.md`
 - `docs/production/milestone_2_household_slice_closure.md`
 - `docs/production/roadmap.md`
 - `docs/production/current_state.md`
