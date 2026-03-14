@@ -79,9 +79,9 @@ Breaking the reserve changes shared pantry truth for both players immediately. N
 Do not create a separate reserve field, reserve owner, or reserve memory.
 
 ## Smallest Good Implementation Shape
-The next narrow implementation step is reserve-aware pantry read and withdraw behavior on the existing pantry nodes only.
+The narrow implementation shape for this rule is reserve-aware pantry read and withdraw behavior on the existing pantry nodes only.
 
-That step should:
+That shape should:
 - show reserve status in pantry read output
 - allow ordinary withdraw from surplus
 - require same-surface confirm-to-break when a withdraw would consume the protected reserve

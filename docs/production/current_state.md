@@ -9,7 +9,12 @@ This page is the operational orientation for the repo. Read it to see the active
 Milestone 1 remains the frozen verified Orchard and Bridge baseline. Milestone 2 has now begun in one narrow verified form only: a shared household pantry slice for apples and flour plus reserve-aware withdrawal.
 
 ## Current Priority
-Keep the honestly verified first household pantry shape plus the honestly verified reserve-aware withdrawal step narrow and frozen. Do not widen into direct pantry baking, shared coins, shared tree ownership, civic rewrites, broader household systems, or household NPC commentary until the next Milestone 2 household step is explicitly documented and approved.
+Keep the honestly verified pantry-plus-reserve household slice narrow and frozen. The next active work is planning/design only around one unresolved household-purpose question: what is the smallest durable reason to keep or rebuild one future pie set in household scope for us later instead of treating the pantry as temporary staging before personal baking? Do not widen into direct pantry baking, shared coins, shared tree ownership, civic rewrites, broader household systems, or household NPC commentary until that next Milestone 2 step is explicitly documented and approved.
+
+## Current Planning Anchor
+The next Milestone 2 work is planning/design only, not runtime expansion.
+
+Question: what is the smallest durable reason to keep or rebuild one future pie set in household scope for us later instead of treating the pantry as temporary staging before personal baking?
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -92,9 +97,9 @@ Keep the honestly verified first household pantry shape plus the honestly verifi
 - civic rewrites
 
 ## Approved Next Baby Steps
-1. keep the first pantry shape frozen at apples-and-flour-only runtime scope plus reserve-aware withdrawal only
+1. keep the verified pantry-plus-reserve household slice frozen at apples-and-flour-only runtime scope
 2. preserve Milestone 1 personal, civic, coin, tree, crafting, and NPC boundaries unchanged under the household pantry layer
-3. decide the next Milestone 2 household step in docs before more runtime work lands
+3. answer one planning/design question in docs before more runtime work lands: what is the smallest durable reason to keep or rebuild one future pie set in household scope for us later instead of treating the pantry as temporary staging before personal baking?
 4. do not begin broader household mechanics or wider Milestone 2 work from reserve-aware withdrawal alone
 
 ## Read This Before You Touch...
@@ -135,6 +140,12 @@ Keep the honestly verified first household pantry shape plus the honestly verifi
 - `docs/production/current_state.md`
 
 ### Milestone Planning
+- `docs/production/milestone_1_closure.md`
+- `docs/production/milestone_2_plan.md`
+- `docs/production/milestone_2_first_shape_review.md`
+- `docs/design/household_pantry_contract.md`
+- `docs/design/household_reserve_contract.md`
+- `docs/production/milestone_2_household_slice_closure.md`
 - `docs/production/roadmap.md`
 - `docs/production/current_state.md`
 - `docs/production/codex_workflow.md`

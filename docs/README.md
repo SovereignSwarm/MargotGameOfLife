@@ -9,22 +9,23 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - Then read `docs/production/current_state.md` for the active milestone, current priority, top risks, and approved next baby steps.
 - Then read `docs/production/codex_workflow.md` for the repo-specific Codex execution contract.
 - If you are implementing Orchard and Bridge, then read `docs/design/milestone_1_ownership_semantics.md`, `docs/production/milestone_1_implementation_order.md`, `docs/production/milestone_1_checklist.md`, and `docs/design/milestone_1_acceptance_criteria.md`.
+- If you are working on the current Milestone 2 household slice or its next design step, then read `docs/production/milestone_1_closure.md`, `docs/production/milestone_2_plan.md`, `docs/production/milestone_2_first_shape_review.md`, `docs/design/household_pantry_contract.md`, `docs/design/household_reserve_contract.md`, and `docs/production/milestone_2_household_slice_closure.md`.
 
 ## Folder Meanings
 - `canon/`: permanent identity rules that should survive engine changes and years of additive growth.
 - `design/`: the current playable expression of the canon, including the active slice and runtime shape.
 - `production/`: operational docs for milestone control, risk, IDs, saves, schemas, and working discipline.
 
-## Milestone 1 Readiness Layer
+## Milestone Anchors
 - `docs/design/milestone_1_ownership_semantics.md`: the locked Milestone 1 personal versus civic ownership rules.
 - `docs/production/milestone_1_implementation_order.md`: the approved Orchard and Bridge feature sequence.
 - `docs/production/milestone_1_checklist.md`: the readiness, build, and review gate for Milestone 1 implementation.
 - `docs/production/milestone_1_closure.md`: the closure anchor for the verified Milestone 1 baseline and the safe boundary before Milestone 2 planning.
-- `docs/production/milestone_2_plan.md`: the planning anchor for household scope, the first household trade-off, and the allowed boundary around the active first pantry-only implementation shape.
+- `docs/production/milestone_2_plan.md`: the planning anchor for household scope, the first household trade-off, and the Milestone 2 boundary before wider household work.
 - `docs/design/household_pantry_contract.md`: the first-shape household pantry authority contract for explicit deposit, withdrawal, failure, and boundary rules in the active first Milestone 2 pantry shape.
-- `docs/production/milestone_2_first_shape_review.md`: the post-verification Milestone 2 decision anchor for what the first pantry shape proved and the next single household tension worth exploring.
-- `docs/design/household_reserve_contract.md`: the narrow reserve-rule contract for the next Milestone 2 household step after the first pantry shape review.
-- `docs/production/milestone_2_household_slice_closure.md`: the closure anchor for the verified pantry-plus-reserve household slice and the next single household question.
+- `docs/production/milestone_2_first_shape_review.md`: the post-verification decision anchor for what the first pantry shape proved and why reserve-aware withdrawal became the next narrow household tension.
+- `docs/design/household_reserve_contract.md`: the reserve-rule contract for the current verified pantry-plus-reserve household slice and its explicit break-reserve boundary.
+- `docs/production/milestone_2_household_slice_closure.md`: the closure anchor for the verified pantry-plus-reserve household slice and the current single household-purpose question.
 
 ## Current Reading Order
 1. `README.md`
@@ -44,22 +45,25 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 15. `docs/design/architecture.md`
 16. `docs/design/milestone_1_ownership_semantics.md`
 17. `docs/design/milestone_1_acceptance_criteria.md`
-18. `docs/design/household_pantry_contract.md`
-19. `docs/design/household_reserve_contract.md`
-20. `docs/production/milestone_2_household_slice_closure.md`
-21. `docs/production/README.md`
-22. `docs/production/milestone_1_implementation_order.md`
-23. `docs/production/milestone_1_checklist.md`
-24. `docs/production/development_operating_model.md`
-25. `docs/production/risk_register.md`
-26. `docs/production/roadmap.md`
-27. `docs/production/production_scale_phase_plan.md`
-28. `docs/production/backlog.md`
-29. `docs/production/decision_log.md`
-30. `docs/production/id_policy.md`
-31. `docs/production/save_compatibility_policy.md`
-32. `docs/production/content_schema_reference.md`
-33. `docs/production/title_strategy.md`
+18. `docs/production/milestone_1_closure.md`
+19. `docs/production/milestone_2_plan.md`
+20. `docs/production/milestone_2_first_shape_review.md`
+21. `docs/design/household_pantry_contract.md`
+22. `docs/design/household_reserve_contract.md`
+23. `docs/production/milestone_2_household_slice_closure.md`
+24. `docs/production/README.md`
+25. `docs/production/milestone_1_implementation_order.md`
+26. `docs/production/milestone_1_checklist.md`
+27. `docs/production/development_operating_model.md`
+28. `docs/production/risk_register.md`
+29. `docs/production/roadmap.md`
+30. `docs/production/production_scale_phase_plan.md`
+31. `docs/production/backlog.md`
+32. `docs/production/decision_log.md`
+33. `docs/production/id_policy.md`
+34. `docs/production/save_compatibility_policy.md`
+35. `docs/production/content_schema_reference.md`
+36. `docs/production/title_strategy.md`
 
 ## Read By Task
 ### Changing Code
@@ -105,6 +109,12 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - `docs/production/current_state.md`
 
 ### Milestone Planning
+- `docs/production/milestone_1_closure.md`
+- `docs/production/milestone_2_plan.md`
+- `docs/production/milestone_2_first_shape_review.md`
+- `docs/design/household_pantry_contract.md`
+- `docs/design/household_reserve_contract.md`
+- `docs/production/milestone_2_household_slice_closure.md`
 - `docs/production/roadmap.md`
 - `docs/production/current_state.md`
 - `docs/production/codex_workflow.md`
