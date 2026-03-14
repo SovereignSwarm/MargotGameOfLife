@@ -9,7 +9,7 @@ This page is the operational orientation for the repo. Read it to see the active
 Milestone 1 remains the frozen verified Orchard and Bridge baseline. Milestone 2 has now begun in one narrow verified form only: a first shared household pantry shape for apples and flour.
 
 ## Current Priority
-Keep the verified first household pantry shape plus the new reserve-aware withdrawal step narrow and honest. The active work is dedicated verification of the reserve-aware withdrawal runtime shape only; do not widen into direct pantry baking, shared coins, shared tree ownership, civic rewrites, broader household systems, or household NPC commentary.
+Keep the honestly verified first household pantry shape plus the honestly verified reserve-aware withdrawal step narrow and frozen. Do not widen into direct pantry baking, shared coins, shared tree ownership, civic rewrites, broader household systems, or household NPC commentary until the next Milestone 2 household step is explicitly documented and approved.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -55,10 +55,10 @@ Keep the verified first household pantry shape plus the new reserve-aware withdr
 - pantry read now reports reserve-ready versus reserve-incomplete status from shared pantry counts
 - surplus withdrawal remains normal, while a reserve-breaking withdrawal now requires explicit same-player same-surface confirmation before state changes
 - reserve-break confirmation is ephemeral runtime-only, clears on non-matching pantry interaction or leave, resets on relaunch, and is not saved as gameplay truth
+- reserve-aware withdrawal is now honestly verified end-to-end in-engine for reserve-ready read output, reserve-incomplete read output, normal surplus withdrawal, reserve-warning no-op behavior, reserve-break confirmation, confirmation reset on read, deposit, different withdraw surface, leave or rejoin, relaunch, co-op invalidation on changed pantry counts, and save-load neutrality
 - `save_version` is now `2` while `content_version` remains `1`
 
 ## What Is Not Ready Yet
-- reserve-aware withdrawal is now implemented in runtime, but it has not yet been honestly verified end-to-end in-engine
 - no direct baking from pantry, no pantry `item/pie` scope, no shared coins, no shared tree ownership, and no civic rewrite are approved
 - no broader household framework, no extra household goods, and no household NPC commentary are approved
 - save smoke expectations now include household pantry state as live gameplay state and must stay explicit as Milestone 2 grows
@@ -68,7 +68,7 @@ Keep the verified first household pantry shape plus the new reserve-aware withdr
 - pantry transfer handlers being mistaken for a full transaction or rollback framework
 - AI tools drifting from repo truth
 - co-op readability slipping if reserve-warning and reserve-break messaging stop feeling obviously shared
-- Milestone 2 widening beyond the reserve-aware withdrawal step before that narrow step is honestly verified
+- Milestone 2 widening beyond the honestly verified reserve-aware withdrawal step before the next household meaning decision is explicitly documented
 
 ## Immediate Reinforcement Moves
 - keep Blocks A, B, C, and D frozen at their verified Milestone 1 scope
@@ -92,10 +92,10 @@ Keep the verified first household pantry shape plus the new reserve-aware withdr
 - civic rewrites
 
 ## Approved Next Baby Steps
-1. run a dedicated in-engine verification pass for reserve-ready read output, surplus withdrawal, reserve-warning no-op behavior, reserve-break confirmation, reset behavior, co-op correctness, and save/load neutrality
-2. keep the first pantry shape frozen at apples-and-flour-only runtime scope plus reserve-aware withdrawal only
-3. preserve Milestone 1 personal, civic, coin, tree, and NPC boundaries unchanged under the new pantry layer
-4. do not begin broader household mechanics or wider Milestone 2 work until the reserve-aware withdrawal step is honestly verified
+1. keep the first pantry shape frozen at apples-and-flour-only runtime scope plus reserve-aware withdrawal only
+2. preserve Milestone 1 personal, civic, coin, tree, crafting, and NPC boundaries unchanged under the household pantry layer
+3. decide the next Milestone 2 household step in docs before more runtime work lands
+4. do not begin broader household mechanics or wider Milestone 2 work from reserve-aware withdrawal alone
 
 ## Read This Before You Touch...
 ### Code

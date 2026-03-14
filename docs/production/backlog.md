@@ -46,7 +46,9 @@ Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `
 - direct baking from pantry, household `item/pie`, shared coins, shared tree ownership, civic rewrites, and household NPC commentary remain out of scope
 - `docs/design/household_reserve_contract.md` now defines the next narrow Milestone 2 step: one derived reserve for `2 apples + 1 flour` plus explicit break-reserve withdrawal, with no new saved fields or broader household scope
 - reserve-aware withdrawal is now implemented in runtime: pantry read reports reserve state, surplus withdrawal stays normal, reserve-breaking withdrawal warns first and confirms only on the next same-player same-surface interaction, and confirmation remains unsaved runtime-only state
-- dedicated in-engine verification is still required before treating the reserve-aware withdrawal step as honestly proven
+- dedicated reserve-aware in-engine verification completed on 2026-03-14
+- reserve-aware withdrawal is now honestly verified end-to-end in-engine for reserve-ready and reserve-incomplete read output, normal surplus withdrawal, reserve-warning no-op behavior, reserve-break confirmation, confirmation reset on read, deposit, different withdraw surface, leave or rejoin, relaunch, co-op invalidation on changed pantry counts, and save-load neutrality
+- keep frozen at current pantry-plus-reserve scope until the next Milestone 2 household step is explicitly documented
 
 ## Milestone 3 - First District Expansion
 - no active backlog items until the reserve-aware withdrawal step is honestly verified
