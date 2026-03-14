@@ -7,6 +7,10 @@ local supported_item_order = {
     "item/apple",
     "item/flour",
 }
+local reserve_thresholds = {
+    ["item/apple"] = 2,
+    ["item/flour"] = 1,
+}
 
 local function is_supported_item(item_id)
     return supported_item_ids[item_id] == true
@@ -103,6 +107,76 @@ function household.get_pantry_counts(world_state)
     end
 
     return counts, nil
+end
+
+function household.get_pantry_reserve_status(world_state)
+    local counts, reason = household.get_pantry_counts(world_state)
+
+    if counts == nil then
+        return nil, reason
+    end
+
+    local missing = {}
+    local surplus = {}
+    local reserve_ready = true
+
+    for _, item_id in ipairs(supported_item_order) do
+        local count = counts[item_id] or 0
+        local threshold = reserve_thresholds[item_id] or 0
+        local missing_amount = math.max(threshold - count, 0)
+        local surplus_amount = math.max(count - threshold, 0)
+
+        missing[item_id] = missing_amount
+        surplus[item_id] = surplus_amount
+
+        if missing_amount > 0 then
+            reserve_ready = false
+        end
+    end
+
+    return {
+        counts = counts,
+        missing = missing,
+        surplus = surplus,
+        reserve_ready = reserve_ready,
+    }, nil
+end
+
+function household.classify_withdrawal(world_state, item_id, quantity)
+    if not is_supported_item(item_id) then
+        return nil, nil, "unsupported_item"
+    end
+
+    local amount = normalize_quantity(quantity)
+
+    if amount == nil then
+        return nil, nil, "invalid_quantity"
+    end
+
+    local reserve_status, reason = household.get_pantry_reserve_status(world_state)
+
+    if reserve_status == nil then
+        return nil, nil, reason
+    end
+
+    local current_count = reserve_status.counts[item_id] or 0
+
+    if current_count < amount then
+        return nil, reserve_status, "insufficient_household_items"
+    end
+
+    if not reserve_status.reserve_ready then
+        return "normal", reserve_status, nil
+    end
+
+    local threshold = reserve_thresholds[item_id] or 0
+    local next_count = current_count - amount
+
+    if next_count < threshold then
+        return "reserve_breaking", reserve_status, nil
+    end
+
+    return "normal", reserve_status, nil
 end
 
 function household.deposit_item(player_state, world_state, item_id, quantity)

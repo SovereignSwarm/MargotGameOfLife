@@ -38,15 +38,18 @@ Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `
 
 ## Milestone 2 - Shared Household Layer
 - first pantry-only implementation landed in runtime on 2026-03-14
+- first pantry-only shape is now honestly verified end-to-end in-engine for deposit, withdrawal, shared visibility, save/load round-trip, and two-player household correctness
 - one shared starter-strip pantry row now provides explicit `item/apple` deposit, explicit `item/flour` deposit, one shared pantry read, explicit `item/apple` withdrawal, and explicit `item/flour` withdrawal
 - `world_state.household.inventory` is now the only live household authority, count-based only, for aggregate `item/apple` and `item/flour` counts
 - pantry transfers now use fixed quantity `1` and are intended to be non-partial at the handler and validation level
 - `save_version` is now `2`; `content_version` remains `1`
 - direct baking from pantry, household `item/pie`, shared coins, shared tree ownership, civic rewrites, and household NPC commentary remain out of scope
-- dedicated in-engine pantry verification is still required before broader Milestone 2 work begins
+- `docs/design/household_reserve_contract.md` now defines the next narrow Milestone 2 step: one derived reserve for `2 apples + 1 flour` plus explicit break-reserve withdrawal, with no new saved fields or broader household scope
+- reserve-aware withdrawal is now implemented in runtime: pantry read reports reserve state, surplus withdrawal stays normal, reserve-breaking withdrawal warns first and confirms only on the next same-player same-surface interaction, and confirmation remains unsaved runtime-only state
+- dedicated in-engine verification is still required before treating the reserve-aware withdrawal step as honestly proven
 
 ## Milestone 3 - First District Expansion
-- no active backlog items until the first pantry shape is proven
+- no active backlog items until the reserve-aware withdrawal step is honestly verified
 
 ## Milestone 4 - First True Judgment / Information Loop
-- no active backlog items until the first pantry shape is proven
+- no active backlog items until the reserve-aware withdrawal step is honestly verified

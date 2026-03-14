@@ -38,6 +38,23 @@ local pantry_surfaces = {
         action = "withdraw",
     },
 }
+local pending_withdraw_confirmations = {}
+local withdraw_surface_keys = {
+    ["item/apple"] = "apple_withdraw",
+    ["item/flour"] = "flour_withdraw",
+}
+
+local function get_item_label(item_id, amount)
+    if item_id == "item/apple" then
+        if amount == 1 then
+            return "apple"
+        end
+
+        return "apples"
+    end
+
+    return "flour"
+end
 
 local function add_pos(base, offset)
     return {
@@ -105,6 +122,29 @@ local function format_pantry_status(world_state)
     ), nil
 end
 
+local function format_reserve_status(world_state)
+    local reserve_status, reason = margot.systems.household.get_pantry_reserve_status(world_state)
+
+    if reserve_status == nil then
+        return nil, nil, reason
+    end
+
+    if reserve_status.reserve_ready then
+        return "Reserve ready.", reserve_status, nil
+    end
+
+    local missing_apples = reserve_status.missing["item/apple"] or 0
+    local missing_flour = reserve_status.missing["item/flour"] or 0
+
+    return string.format(
+        "Reserve incomplete. Need %d %s and %d %s.",
+        missing_apples,
+        get_item_label("item/apple", missing_apples),
+        missing_flour,
+        get_item_label("item/flour", missing_flour)
+    ), reserve_status, nil
+end
+
 local function build_status_line(player_state, world_state)
     local pantry_status, reason = format_pantry_status(world_state)
 
@@ -112,7 +152,14 @@ local function build_status_line(player_state, world_state)
         return nil, reason
     end
 
-    return format_personal_status(player_state) .. " | " .. pantry_status, nil
+    local reserve_status_text
+    reserve_status_text, _, reason = format_reserve_status(world_state)
+
+    if reserve_status_text == nil then
+        return nil, reason
+    end
+
+    return format_personal_status(player_state) .. " | " .. pantry_status .. " | " .. reserve_status_text, nil
 end
 
 local function report_result(player, summary, player_state, world_state)
@@ -135,7 +182,15 @@ local function report_read(player, world_state)
         return reason
     end
 
-    tell_player(player, pantry_status)
+    local reserve_status_text
+    reserve_status_text, _, reason = format_reserve_status(world_state)
+
+    if reserve_status_text == nil then
+        tell_player(player, "The pantry is not ready.")
+        return reason
+    end
+
+    tell_player(player, pantry_status .. " | " .. reserve_status_text)
     return nil
 end
 
@@ -182,6 +237,58 @@ local function report_failure(player, action, item_id, reason, player_state, wor
     tell_player(player, summary)
 end
 
+local function clear_pending_confirmation(player_name)
+    pending_withdraw_confirmations[player_name] = nil
+end
+
+local function get_current_pantry_counts(world_state)
+    local reserve_status, reason = margot.systems.household.get_pantry_reserve_status(world_state)
+
+    if reserve_status == nil then
+        return nil, reason
+    end
+
+    return reserve_status.counts, nil
+end
+
+local function counts_match_snapshot(counts, snapshot)
+    return (counts or {})["item/apple"] == (snapshot or {})["item/apple"]
+        and (counts or {})["item/flour"] == (snapshot or {})["item/flour"]
+end
+
+local function set_pending_confirmation(player_name, item_id, surface_key, counts)
+    pending_withdraw_confirmations[player_name] = {
+        item_id = item_id,
+        surface_key = surface_key,
+        counts = {
+            ["item/apple"] = (counts or {})["item/apple"] or 0,
+            ["item/flour"] = (counts or {})["item/flour"] or 0,
+        },
+    }
+end
+
+local function report_reserve_warning(player, item_id, player_state, world_state)
+    report_result(
+        player,
+        string.format(
+            "Reserve warning: the first click did not withdraw anything yet. Click this same %s withdraw surface again to break the reserve.",
+            get_item_display_name(item_id)
+        ),
+        player_state,
+        world_state
+    )
+end
+
+local function report_withdraw_result(player, item_id, player_state, world_state, mode)
+    local summary_by_mode = {
+        normal_ready = string.format("Withdrew 1 %s. Reserve ready.", get_item_display_name(item_id)),
+        normal_incomplete = string.format("Withdrew 1 %s. Reserve incomplete.", get_item_display_name(item_id)),
+        reserve_broken = string.format("Withdrew 1 %s. Reserve broken.", get_item_display_name(item_id)),
+    }
+
+    report_result(player, summary_by_mode[mode] or string.format("Withdrew 1 %s.", get_item_display_name(item_id)), player_state, world_state)
+end
+
 local function persist_deposit_states(player, next_player_state, next_world_state)
     -- This is not transactional; save order only narrows the bounded crash-window trade-off.
     next_world_state = save_world_state(next_world_state)
@@ -197,6 +304,8 @@ local function persist_withdraw_states(player, next_player_state, next_world_sta
 end
 
 local function handle_deposit(player, item_id)
+    local player_name = player:get_player_name()
+    clear_pending_confirmation(player_name)
     local player_state = load_player_state(player)
     local world_state = load_world_state()
     local next_player_state, next_world_state, reason = margot.systems.household.deposit_item(
@@ -216,9 +325,56 @@ local function handle_deposit(player, item_id)
 end
 
 local function handle_withdraw(player, item_id)
+    local player_name = player:get_player_name()
+    local surface_key = withdraw_surface_keys[item_id]
+    local pending_confirmation = pending_withdraw_confirmations[player_name]
+
+    if pending_confirmation ~= nil and (
+        pending_confirmation.item_id ~= item_id
+        or pending_confirmation.surface_key ~= surface_key
+    ) then
+        clear_pending_confirmation(player_name)
+        pending_confirmation = nil
+    end
+
     local player_state = load_player_state(player)
     local world_state = load_world_state()
-    local next_player_state, next_world_state, reason = margot.systems.household.withdraw_item(
+    local withdrawal_mode, reserve_status, reason = margot.systems.household.classify_withdrawal(
+        world_state,
+        item_id,
+        1
+    )
+
+    if withdrawal_mode == nil then
+        clear_pending_confirmation(player_name)
+        report_failure(player, "withdraw", item_id, reason, player_state, world_state)
+        return
+    end
+
+    if pending_confirmation ~= nil then
+        local current_counts, counts_reason = get_current_pantry_counts(world_state)
+
+        if current_counts == nil then
+            clear_pending_confirmation(player_name)
+            report_failure(player, "withdraw", item_id, counts_reason, player_state, world_state)
+            return
+        end
+
+        if not counts_match_snapshot(current_counts, pending_confirmation.counts) or withdrawal_mode ~= "reserve_breaking" then
+            clear_pending_confirmation(player_name)
+            pending_confirmation = nil
+        end
+    end
+
+    if withdrawal_mode == "reserve_breaking" and pending_confirmation == nil then
+        set_pending_confirmation(player_name, item_id, surface_key, reserve_status.counts)
+        report_reserve_warning(player, item_id, player_state, world_state)
+        return
+    end
+
+    clear_pending_confirmation(player_name)
+
+    local next_player_state, next_world_state, withdraw_reason = margot.systems.household.withdraw_item(
         player_state,
         world_state,
         item_id,
@@ -226,15 +382,34 @@ local function handle_withdraw(player, item_id)
     )
 
     if next_player_state == nil or next_world_state == nil then
-        report_failure(player, "withdraw", item_id, reason, player_state, world_state)
+        report_failure(player, "withdraw", item_id, withdraw_reason, player_state, world_state)
         return
     end
 
     next_player_state, next_world_state = persist_withdraw_states(player, next_player_state, next_world_state)
-    report_result(player, string.format("Withdrew 1 %s.", get_item_display_name(item_id)), next_player_state, next_world_state)
+
+    local next_reserve_status, next_reason = margot.systems.household.get_pantry_reserve_status(next_world_state)
+
+    if next_reserve_status == nil then
+        report_failure(player, "withdraw", item_id, next_reason, next_player_state, next_world_state)
+        return
+    end
+
+    if withdrawal_mode == "reserve_breaking" then
+        report_withdraw_result(player, item_id, next_player_state, next_world_state, "reserve_broken")
+        return
+    end
+
+    if next_reserve_status.reserve_ready then
+        report_withdraw_result(player, item_id, next_player_state, next_world_state, "normal_ready")
+        return
+    end
+
+    report_withdraw_result(player, item_id, next_player_state, next_world_state, "normal_incomplete")
 end
 
 local function handle_read(player)
+    clear_pending_confirmation(player:get_player_name())
     local world_state = load_world_state()
     report_read(player, world_state)
 end
@@ -326,6 +501,12 @@ minetest.register_node(node_names.flour_withdraw, new_node_def(
 
 minetest.register_on_joinplayer(function()
     pantry.ensure_surface()
+end)
+
+minetest.register_on_leaveplayer(function(player)
+    if player ~= nil then
+        clear_pending_confirmation(player:get_player_name())
+    end
 end)
 
 margot.runtime.household_pantry = pantry

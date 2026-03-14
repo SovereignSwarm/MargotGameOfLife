@@ -6,10 +6,10 @@ This page is the operational orientation for the repo. Read it to see the active
 ## Current Milestone
 `Milestone 2 - Shared Household Layer`
 
-Milestone 1 remains the frozen verified Orchard and Bridge baseline. Milestone 2 has now begun in one narrow form only: a first shared household pantry shape for apples and flour.
+Milestone 1 remains the frozen verified Orchard and Bridge baseline. Milestone 2 has now begun in one narrow verified form only: a first shared household pantry shape for apples and flour.
 
 ## Current Priority
-Keep the first household pantry implementation narrow and honest. The active work is explicit deposit, shared read, and explicit withdrawal for `item/apple` and `item/flour` only under `world_state.household.inventory`; do not widen into direct pantry baking, shared coins, shared tree ownership, civic rewrites, broader household systems, or household NPC commentary.
+Keep the verified first household pantry shape plus the new reserve-aware withdrawal step narrow and honest. The active work is dedicated verification of the reserve-aware withdrawal runtime shape only; do not widen into direct pantry baking, shared coins, shared tree ownership, civic rewrites, broader household systems, or household NPC commentary.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -50,20 +50,25 @@ Keep the first household pantry implementation narrow and honest. The active wor
 - the first pantry shape now exposes five fixed-action starter-strip surfaces on exact pantry-owned cells at `z = -1`: apple deposit, flour deposit, pantry read, apple withdraw, and flour withdraw
 - pantry transfers are explicit, fixed at quantity `1`, and intended to be non-partial at the handler and validation level
 - pantry crafting, sale, and other use do not exist; Block A crafting and sale still read only from personal inventory
+- the first pantry shape is now honestly verified end-to-end in-engine for deposit, withdrawal, shared visibility, save/load round-trip, and two-player household correctness
+- reserve-aware withdrawal now treats `2 apples + 1 flour` as one derived complete reserve only, with no saved reserve field
+- pantry read now reports reserve-ready versus reserve-incomplete status from shared pantry counts
+- surplus withdrawal remains normal, while a reserve-breaking withdrawal now requires explicit same-player same-surface confirmation before state changes
+- reserve-break confirmation is ephemeral runtime-only, clears on non-matching pantry interaction or leave, resets on relaunch, and is not saved as gameplay truth
 - `save_version` is now `2` while `content_version` remains `1`
 
 ## What Is Not Ready Yet
-- a dedicated in-engine pantry verification pass is still needed; this repo pass landed the runtime shape and save path but did not complete Luanti execution in the current environment
+- reserve-aware withdrawal is now implemented in runtime, but it has not yet been honestly verified end-to-end in-engine
 - no direct baking from pantry, no pantry `item/pie` scope, no shared coins, no shared tree ownership, and no civic rewrite are approved
 - no broader household framework, no extra household goods, and no household NPC commentary are approved
-- save smoke expectations now include household pantry state and still need explicit runtime verification as real gameplay state lands
+- save smoke expectations now include household pantry state as live gameplay state and must stay explicit as Milestone 2 grows
 
 ## Top Active Risks Right Now
 - personal, household, and civic boundaries leaking into one mixed runtime path
 - pantry transfer handlers being mistaken for a full transaction or rollback framework
 - AI tools drifting from repo truth
-- co-op readability slipping if the first pantry shape stops feeling obviously shared
-- Milestone 2 widening before the pantry-only shape is proven
+- co-op readability slipping if reserve-warning and reserve-break messaging stop feeling obviously shared
+- Milestone 2 widening beyond the reserve-aware withdrawal step before that narrow step is honestly verified
 
 ## Immediate Reinforcement Moves
 - keep Blocks A, B, C, and D frozen at their verified Milestone 1 scope
@@ -87,10 +92,10 @@ Keep the first household pantry implementation narrow and honest. The active wor
 - civic rewrites
 
 ## Approved Next Baby Steps
-1. run a dedicated Luanti verification pass for pantry deposit, withdrawal, shared visibility, save/load, and co-op correctness
-2. keep the first pantry shape frozen at apples-and-flour-only, deposit-read-withdraw-only scope while it is verified
+1. run a dedicated in-engine verification pass for reserve-ready read output, surplus withdrawal, reserve-warning no-op behavior, reserve-break confirmation, reset behavior, co-op correctness, and save/load neutrality
+2. keep the first pantry shape frozen at apples-and-flour-only runtime scope plus reserve-aware withdrawal only
 3. preserve Milestone 1 personal, civic, coin, tree, and NPC boundaries unchanged under the new pantry layer
-4. do not begin broader household mechanics or wider Milestone 2 work until the first pantry shape is proven
+4. do not begin broader household mechanics or wider Milestone 2 work until the reserve-aware withdrawal step is honestly verified
 
 ## Read This Before You Touch...
 ### Code
