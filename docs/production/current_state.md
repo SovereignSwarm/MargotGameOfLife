@@ -6,10 +6,10 @@ This page is the operational orientation for the repo. Read it to see the active
 ## Current Milestone
 `Milestone 1 - Orchard and Bridge`
 
-Milestone 1 has now started. Blocks A, B, and C have now each been honestly verified end-to-end in-engine at their approved scope, and Block D now exists in runtime as a narrow stateless reflection layer over verified tree and bridge outcomes. The next valid work is a dedicated Block D verification pass only.
+Milestone 1 is now honestly verified end-to-end in-engine at its approved Orchard and Bridge scope. Blocks A, B, C, and D are now all verified at their intended Milestone 1 boundaries, and no wider NPC, dialogue, or household expansion is approved by this milestone.
 
 ## Current Priority
-Run a dedicated Block D verification pass through `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, `docs/design/milestone_1_ownership_semantics.md`, and `docs/design/milestone_1_acceptance_criteria.md`. Keep Blocks A, B, and C frozen at their verified scope, keep Block D frozen at its current stateless success-only form until verified, and do not widen it into dialogue, memory, or narrative systems.
+Treat Milestone 1 as complete at its current approved scope. Keep Blocks A, B, C, and D frozen as verified, do not begin Block E or broader NPC or dialogue work, and do not widen into household, memory, or narrative systems until a new production priority is explicitly approved.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -44,11 +44,11 @@ Run a dedicated Block D verification pass through `docs/production/milestone_1_c
 - Block D now appends one optional NPC-attributed follow-up line to success output only for tree purchase, first world bridge contribution, bridge framing, and bridge completion
 - Block D trigger detection is stateless, event-time only, and derived from pre/post personal or civic truth already required by Blocks B and C
 - Block D does not add new save data, does not change ownership scope, and does not change canonical IDs
+- Block D has now been honestly verified end-to-end in-engine for approved success triggers only, non-trigger silence including ready-tree harvest, co-op targeting, output shape, and save/load neutrality
 
 ## What Is Not Ready Yet
-- the Orchard and Bridge slice is not yet fully implemented
-- Block D is not yet honestly verified end-to-end in-engine
 - household semantics remain deferred to Milestone 2
+- no Block E or broader NPC, dialogue, or memory work is approved yet
 - save smoke expectations are defined, but feature passes still need to verify them as real gameplay state lands
 
 ## Top Active Risks Right Now
@@ -75,10 +75,10 @@ Run a dedicated Block D verification pass through `docs/production/milestone_1_c
 - framework-heavy or UI-polish work
 
 ## Approved Next Baby Steps
-1. verify Block D `tree purchase` reflection honestly in-engine
-2. verify Block D `first bridge contribution`, `framing`, and `complete` reflections honestly in-engine
-3. verify that Block D added no new save, ID, or ownership authority
-4. keep Block D frozen at its current narrow form until the verification pass is complete
+1. keep Blocks A, B, C, and D frozen at their verified Milestone 1 scope
+2. do not begin Block E or broader NPC, dialogue, or memory work
+3. preserve the current save, ID, and ownership boundaries as the Milestone 1 baseline
+4. route any post-Milestone 1 expansion through production planning before new runtime work begins
 
 ## Read This Before You Touch...
 ### Code

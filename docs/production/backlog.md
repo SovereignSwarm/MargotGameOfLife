@@ -32,7 +32,9 @@ Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `
 - one optional Baker line now appends only on successful `asset/apple_tree` purchase
 - one optional Builder line now appends only on first shared bridge contribution, `framing`, and `complete`
 - no new save data, ownership scope, or canonical IDs were introduced for Block D
-- dedicated Block D verification pass is required before Milestone 1 is treated as complete
+- dedicated Block D verification pass completed on 2026-03-14
+- honestly verified end-to-end in-engine on 2026-03-14 for approved success triggers only, ready-tree harvest silence, non-trigger silence, co-op targeting, output shape, and save/load neutrality
+- keep frozen at current scope; do not begin broader NPC or dialogue work from this block alone
 
 ## Milestone 2 - Shared Household Layer Prep
 1. define which current assets and places may become household scope later
