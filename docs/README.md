@@ -19,6 +19,8 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - `docs/design/milestone_1_ownership_semantics.md`: the locked Milestone 1 personal versus civic ownership rules.
 - `docs/production/milestone_1_implementation_order.md`: the approved Orchard and Bridge feature sequence.
 - `docs/production/milestone_1_checklist.md`: the readiness, build, and review gate for Milestone 1 implementation.
+- `docs/production/milestone_1_closure.md`: the closure anchor for the verified Milestone 1 baseline and the safe boundary before Milestone 2 planning.
+- `docs/production/milestone_2_plan.md`: the planning anchor for household scope, the first household trade-off, and Milestone 2's safe boundary before implementation.
 
 ## Current Reading Order
 1. `README.md`

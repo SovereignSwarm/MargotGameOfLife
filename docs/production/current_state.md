@@ -9,7 +9,7 @@ This page is the operational orientation for the repo. Read it to see the active
 Milestone 1 is now honestly verified end-to-end in-engine at its approved Orchard and Bridge scope. Blocks A, B, C, and D are now all verified at their intended Milestone 1 boundaries, and no wider NPC, dialogue, or household expansion is approved by this milestone.
 
 ## Current Priority
-Treat Milestone 1 as complete at its current approved scope. Keep Blocks A, B, C, and D frozen as verified, do not begin Block E or broader NPC or dialogue work, and do not widen into household, memory, or narrative systems until a new production priority is explicitly approved.
+Treat Milestone 1 as the frozen verified baseline. The next approved work is Milestone 2 planning only: use `docs/production/milestone_2_plan.md` to define household scope and the first household trade-off, do not begin implementation yet, and do not widen into broader NPC, dialogue, memory, or narrative systems.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -76,9 +76,9 @@ Treat Milestone 1 as complete at its current approved scope. Keep Blocks A, B, C
 
 ## Approved Next Baby Steps
 1. keep Blocks A, B, C, and D frozen at their verified Milestone 1 scope
-2. do not begin Block E or broader NPC, dialogue, or memory work
-3. preserve the current save, ID, and ownership boundaries as the Milestone 1 baseline
-4. route any post-Milestone 1 expansion through production planning before new runtime work begins
+2. use `docs/production/milestone_2_plan.md` as the planning boundary for household scope and the first household trade-off
+3. do not begin Milestone 2 implementation or broader NPC, dialogue, or memory work
+4. preserve the current save, ID, and ownership boundaries as the Milestone 1 baseline while Milestone 2 is planned
 
 ## Read This Before You Touch...
 ### Code

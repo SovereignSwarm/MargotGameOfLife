@@ -13,7 +13,7 @@ Money is not the goal. Money is fuel.
 ## Current Milestone
 The repo is currently in `Milestone 1 - Orchard and Bridge`.
 
-The current focus is an honest Block C verification pass only: keep Block A and Block B frozen at verified scope, keep Block C frozen at its current narrow civic-only form until verified, and do not begin Block D until Block C exit conditions are true.
+Milestone 1 is complete and verified as a baseline slice. Blocks A, B, C, and D are frozen at their proven Orchard and Bridge boundaries; use `docs/production/milestone_1_closure.md` to preserve that baseline and `docs/production/milestone_2_plan.md` for household-layer planning.
 
 ## V1 Loop
 Build a tiny Luanti-based multiplayer prototype proving this loop:

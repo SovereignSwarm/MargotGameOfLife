@@ -37,8 +37,8 @@ Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `
 - keep frozen at current scope; do not begin broader NPC or dialogue work from this block alone
 
 ## Milestone 2 - Shared Household Layer Prep
-1. define which current assets and places may become household scope later
-2. define the first required household-level trade-off before implementation
+- `docs/production/milestone_2_plan.md` is now the planning anchor for household scope and the first household trade-off
+- do not begin Milestone 2 implementation until a bounded implementation pass is explicitly approved
 
 ## Milestone 3 - First District Expansion
 - no active backlog items until Milestone 1 is proven
