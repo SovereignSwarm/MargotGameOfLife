@@ -1,7 +1,7 @@
 # Household Pantry Contract
 
 ## Purpose
-Define the first household pantry authority before Milestone 2 implementation begins. This contract removes withdrawal and use ambiguity without changing the frozen Milestone 1 personal and civic rules.
+Define the first household pantry authority for the first Milestone 2 implementation shape. This contract removes withdrawal and use ambiguity without changing the frozen Milestone 1 personal and civic rules.
 
 ## Core Rule
 `item/apple` and `item/flour` become household only through explicit deposit and remain household until explicit withdrawal.

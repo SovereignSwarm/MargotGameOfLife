@@ -1,7 +1,7 @@
 # Milestone 2 Plan
 
 ## Purpose
-Milestone 2 should introduce household scope and the first meaningful household trade-off. Its job is to make "ours" real between personal and civic life without resetting or casually rewriting the verified Milestone 1 baseline. This doc defines scope and boundaries only; it does not authorize implementation or silent save-shape activation yet.
+Milestone 2 should introduce household scope and the first meaningful household trade-off. Its job is to make "ours" real between personal and civic life without resetting or casually rewriting the verified Milestone 1 baseline. This doc remains the scope and boundary anchor for Milestone 2; the first pantry-only implementation shape is now active, but this plan still does not authorize silent widening beyond that shape.
 
 ## Why Household Comes Next
 Milestone 1 proved personal agency and civic consequence. The next missing layer is the shared household authority between "mine" and "town," which the roadmap and phase plan already identify as the next clean co-op problem.

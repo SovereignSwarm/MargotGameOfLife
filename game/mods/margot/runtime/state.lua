@@ -74,8 +74,9 @@ end
 
 function state.new_household_state()
     return {
-        -- Reserved for Milestone 2 household semantics; unused by Milestone 1 gameplay authority.
+        -- First live household authority: a count-based pantry inventory for apples and flour only.
         inventory = {},
+        -- Still reserved beyond the first pantry shape.
         owned_assets = {},
         upgrades = {},
     }
@@ -93,7 +94,7 @@ function state.new_world_state()
     return stamp_versions({
         -- Reserved for future world-scoped indexing; Milestone 1 personal authority lives in per-player saves.
         players = {},
-        -- Household state remains explicit in the save shape, but it is not an active Milestone 1 authority.
+        -- Household inventory is the first live household authority; other household fields remain reserved.
         household = state.new_household_state(),
         civic = state.new_civic_state(),
     })

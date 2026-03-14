@@ -4,12 +4,12 @@
 This page is the operational orientation for the repo. Read it to see the active milestone, the current production priority, the top risks, and the next valid steps before broader coding begins.
 
 ## Current Milestone
-`Milestone 1 - Orchard and Bridge`
+`Milestone 2 - Shared Household Layer`
 
-Milestone 1 is now honestly verified end-to-end in-engine at its approved Orchard and Bridge scope. Blocks A, B, C, and D are now all verified at their intended Milestone 1 boundaries, and no wider NPC, dialogue, or household expansion is approved by this milestone.
+Milestone 1 remains the frozen verified Orchard and Bridge baseline. Milestone 2 has now begun in one narrow form only: a first shared household pantry shape for apples and flour.
 
 ## Current Priority
-Treat Milestone 1 as the frozen verified baseline. The next approved work is Milestone 2 planning only: use `docs/production/milestone_2_plan.md` to define household scope and the first household trade-off, do not begin implementation yet, and do not widen into broader NPC, dialogue, memory, or narrative systems.
+Keep the first household pantry implementation narrow and honest. The active work is explicit deposit, shared read, and explicit withdrawal for `item/apple` and `item/flour` only under `world_state.household.inventory`; do not widen into direct pantry baking, shared coins, shared tree ownership, civic rewrites, broader household systems, or household NPC commentary.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -45,26 +45,33 @@ Treat Milestone 1 as the frozen verified baseline. The next approved work is Mil
 - Block D trigger detection is stateless, event-time only, and derived from pre/post personal or civic truth already required by Blocks B and C
 - Block D does not add new save data, does not change ownership scope, and does not change canonical IDs
 - Block D has now been honestly verified end-to-end in-engine for approved success triggers only, non-trigger silence including ready-tree harvest, co-op targeting, output shape, and save/load neutrality
+- Milestone 2 now activates `world_state.household.inventory` as the first live household authority
+- the first household pantry shape is count-based only and stores aggregate counts for `item/apple` and `item/flour`
+- the first pantry shape now exposes five fixed-action starter-strip surfaces on exact pantry-owned cells at `z = -1`: apple deposit, flour deposit, pantry read, apple withdraw, and flour withdraw
+- pantry transfers are explicit, fixed at quantity `1`, and intended to be non-partial at the handler and validation level
+- pantry crafting, sale, and other use do not exist; Block A crafting and sale still read only from personal inventory
+- `save_version` is now `2` while `content_version` remains `1`
 
 ## What Is Not Ready Yet
-- household semantics remain deferred to Milestone 2
-- no Block E or broader NPC, dialogue, or memory work is approved yet
-- save smoke expectations are defined, but feature passes still need to verify them as real gameplay state lands
+- a dedicated in-engine pantry verification pass is still needed; this repo pass landed the runtime shape and save path but did not complete Luanti execution in the current environment
+- no direct baking from pantry, no pantry `item/pie` scope, no shared coins, no shared tree ownership, and no civic rewrite are approved
+- no broader household framework, no extra household goods, and no household NPC commentary are approved
+- save smoke expectations now include household pantry state and still need explicit runtime verification as real gameplay state lands
 
 ## Top Active Risks Right Now
-- implementation beginning outside the Milestone 1 acceptance gate
+- personal, household, and civic boundaries leaking into one mixed runtime path
+- pantry transfer handlers being mistaken for a full transaction or rollback framework
 - AI tools drifting from repo truth
-- co-op being treated like two solo players sharing space
-- NPC commentary drifting into chatter instead of state-based consequence
+- co-op readability slipping if the first pantry shape stops feeling obviously shared
+- Milestone 2 widening before the pantry-only shape is proven
 
 ## Immediate Reinforcement Moves
-- keep Block A limited to the verified shared starter strip, personal inventory, crafting, sale, and coin flow only
-- keep the current prototype accessibility layer only as the minimum starter-area support needed for verified Blocks A and B, the current Block C runtime, and Block C verification
-- keep Block B frozen at the verified personal tree scope
-- keep Block C frozen at one shared bridge site, fixed personal-to-civic coin contribution, explicit civic bridge state, and one visible completion outcome only
-- keep Block D frozen at one optional baker or builder follow-up line on defined success triggers only
-- keep personal and civic authorities singular and explicit
-- verify the Milestone 1 save smoke expectations as each block becomes real
+- keep Blocks A, B, C, and D frozen at their verified Milestone 1 scope
+- keep household authority singular and explicit at `world_state.household.inventory` only
+- keep the pantry count-based only for `item/apple` and `item/flour`
+- keep pantry interaction bounded to the exact `z = -1` starter-strip row cells already chosen for deposit, read, and withdrawal
+- keep crafting and sale personal-inventory-only after explicit withdrawal
+- keep the persistence caveat honest: intended non-partial handler behavior does not yet mean transaction-wrapped cross-write persistence
 
 ## Explicitly Out Of Scope Right Now
 - extra districts or professions
@@ -73,12 +80,17 @@ Treat Milestone 1 as the frozen verified baseline. The next approved work is Mil
 - public-server or MMO assumptions
 - lore expansion not attached to playable places or systems
 - framework-heavy or UI-polish work
+- direct baking from pantry
+- shared coins or household spending
+- shared tree ownership
+- household `item/pie` scope
+- civic rewrites
 
 ## Approved Next Baby Steps
-1. keep Blocks A, B, C, and D frozen at their verified Milestone 1 scope
-2. use `docs/production/milestone_2_plan.md` as the planning boundary for household scope and the first household trade-off
-3. do not begin Milestone 2 implementation or broader NPC, dialogue, or memory work
-4. preserve the current save, ID, and ownership boundaries as the Milestone 1 baseline while Milestone 2 is planned
+1. run a dedicated Luanti verification pass for pantry deposit, withdrawal, shared visibility, save/load, and co-op correctness
+2. keep the first pantry shape frozen at apples-and-flour-only, deposit-read-withdraw-only scope while it is verified
+3. preserve Milestone 1 personal, civic, coin, tree, and NPC boundaries unchanged under the new pantry layer
+4. do not begin broader household mechanics or wider Milestone 2 work until the first pantry shape is proven
 
 ## Read This Before You Touch...
 ### Code
@@ -127,9 +139,8 @@ Treat Milestone 1 as the frozen verified baseline. The next approved work is Mil
 - `docs/production/risk_register.md`
 
 ## Deferred Questions That Must Not Be Smuggled Into Code
-- when and how household scope becomes a real gameplay authority
 - whether `item/tree_deed` should become a visible receipt item later without becoming a second ownership authority
-- what the first true household trade-off is in Milestone 2
+- how wider household use rules should evolve after the withdraw-first pantry proof
 - how deeper NPC memory and judgment systems are introduced after Milestone 1
 
 ## Final Rule

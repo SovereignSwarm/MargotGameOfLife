@@ -36,12 +36,17 @@ Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `
 - honestly verified end-to-end in-engine on 2026-03-14 for approved success triggers only, ready-tree harvest silence, non-trigger silence, co-op targeting, output shape, and save/load neutrality
 - keep frozen at current scope; do not begin broader NPC or dialogue work from this block alone
 
-## Milestone 2 - Shared Household Layer Prep
-- `docs/production/milestone_2_plan.md` is now the planning anchor for household scope and the first household trade-off
-- do not begin Milestone 2 implementation until a bounded implementation pass is explicitly approved
+## Milestone 2 - Shared Household Layer
+- first pantry-only implementation landed in runtime on 2026-03-14
+- one shared starter-strip pantry row now provides explicit `item/apple` deposit, explicit `item/flour` deposit, one shared pantry read, explicit `item/apple` withdrawal, and explicit `item/flour` withdrawal
+- `world_state.household.inventory` is now the only live household authority, count-based only, for aggregate `item/apple` and `item/flour` counts
+- pantry transfers now use fixed quantity `1` and are intended to be non-partial at the handler and validation level
+- `save_version` is now `2`; `content_version` remains `1`
+- direct baking from pantry, household `item/pie`, shared coins, shared tree ownership, civic rewrites, and household NPC commentary remain out of scope
+- dedicated in-engine pantry verification is still required before broader Milestone 2 work begins
 
 ## Milestone 3 - First District Expansion
-- no active backlog items until Milestone 1 is proven
+- no active backlog items until the first pantry shape is proven
 
 ## Milestone 4 - First True Judgment / Information Loop
-- no active backlog items until Milestone 1 is proven
+- no active backlog items until the first pantry shape is proven

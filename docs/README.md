@@ -20,8 +20,8 @@ This folder is the navigation map and authority order for MargotGameOfLife. Use 
 - `docs/production/milestone_1_implementation_order.md`: the approved Orchard and Bridge feature sequence.
 - `docs/production/milestone_1_checklist.md`: the readiness, build, and review gate for Milestone 1 implementation.
 - `docs/production/milestone_1_closure.md`: the closure anchor for the verified Milestone 1 baseline and the safe boundary before Milestone 2 planning.
-- `docs/production/milestone_2_plan.md`: the planning anchor for household scope, the first household trade-off, and Milestone 2's safe boundary before implementation.
-- `docs/design/household_pantry_contract.md`: the first-shape household pantry authority contract for explicit deposit, withdrawal, failure, and boundary rules before Milestone 2 implementation.
+- `docs/production/milestone_2_plan.md`: the planning anchor for household scope, the first household trade-off, and the allowed boundary around the active first pantry-only implementation shape.
+- `docs/design/household_pantry_contract.md`: the first-shape household pantry authority contract for explicit deposit, withdrawal, failure, and boundary rules in the active first Milestone 2 pantry shape.
 
 ## Current Reading Order
 1. `README.md`

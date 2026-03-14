@@ -1,5 +1,5 @@
 local migrations = {
-    current_save_version = 1,
+    current_save_version = 2,
     current_content_version = 1,
 }
 
@@ -7,6 +7,29 @@ local function stamp_versions(state)
     state.save_version = migrations.current_save_version
     state.content_version = migrations.current_content_version
     return state
+end
+
+local function normalize_household_pantry_inventory(working)
+    local household = working.household or {}
+    local inventory = household.inventory or {}
+    local supported_item_ids = {
+        "item/apple",
+        "item/flour",
+    }
+
+    for _, item_id in ipairs(supported_item_ids) do
+        local raw_value = inventory[item_id]
+        local amount = math.floor(tonumber(raw_value) or 0)
+
+        if amount <= 0 then
+            inventory[item_id] = nil
+        else
+            inventory[item_id] = amount
+        end
+    end
+
+    household.inventory = inventory
+    working.household = household
 end
 
 function migrations.migrate_world_state(state)
@@ -17,6 +40,10 @@ function migrations.migrate_world_state(state)
         working.players = working.players or {}
         working.household = working.household or {}
         working.civic = working.civic or {}
+    end
+
+    if version < 2 then
+        normalize_household_pantry_inventory(working)
     end
 
     return stamp_versions(working)

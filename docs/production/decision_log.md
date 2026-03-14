@@ -74,3 +74,8 @@
 - Status: Accepted
 - Decision: Block A runtime accessibility uses one inert prototype substrate node for the required starter-world mapgen aliases, a fixed safe starter anchor and platform, and ordered join or respawn placement that only happens after the shared starter area is ready.
 - Consequence: the prototype can be tested from a fresh world without widening into a broader world-generation system, while Block A remains one shared civic strip and keeps gameplay authority in per-player inventory plus `player_state.coins`.
+
+## 2026-03-14 ADR-016 The First Live Household Authority Is Pantry Inventory
+- Status: Accepted
+- Decision: the first Milestone 2 household authority is `world_state.household.inventory`, count-based only, with aggregate `item/apple` and `item/flour` pantry counts plus explicit deposit, shared read, and explicit withdrawal.
+- Consequence: household scope becomes real without activating shared coins, shared tree ownership, direct pantry baking, household `item/pie`, or civic rewrites; `save_version` advances to `2` while `content_version` stays `1`, other reserved household fields stay inactive, and handler-level non-partial pantry transfers do not imply a new transaction or rollback framework.
