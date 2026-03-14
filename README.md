@@ -9,14 +9,14 @@ Money is not the goal. Money is fuel.
 - If you are working through Codex or Cursor, read `AGENTS.md` for the repo operating contract.
 - Then read `docs/production/current_state.md` for the active milestone, current priority, top risks, and approved next baby steps.
 - If you are implementing Orchard and Bridge, read `docs/design/milestone_1_ownership_semantics.md`, `docs/production/milestone_1_implementation_order.md`, `docs/production/milestone_1_checklist.md`, and `docs/design/milestone_1_acceptance_criteria.md` before coding.
-- If you are working on the current household slice or its next design step, read `docs/production/milestone_2_plan.md`, `docs/production/milestone_2_first_shape_review.md`, `docs/design/household_pantry_contract.md`, `docs/design/household_reserve_contract.md`, and `docs/production/milestone_2_household_slice_closure.md` before changing anything.
+- If you are working on the current household slice or its closure context, read `docs/production/milestone_2_plan.md`, `docs/production/milestone_2_first_shape_review.md`, `docs/design/household_pantry_contract.md`, `docs/design/household_reserve_contract.md`, `docs/production/milestone_2_household_slice_closure.md`, and `docs/production/milestone_2_baseline_decision.md` before changing anything.
 
 ## Current Milestone
 The repo is currently in `Milestone 2 - Shared Household Layer`.
 
-Milestone 1 is complete and frozen as the verified Orchard and Bridge baseline. The current verified Milestone 2 slice is pantry plus reserve-aware withdrawal only: explicit shared deposit, shared read, explicit withdrawal, and explicit break-reserve choice for apples and flour, with no direct pantry baking and no broader household expansion yet.
+Milestone 1 is complete and frozen as the verified Orchard and Bridge baseline. Milestone 2 is closed at the current verified household baseline: pantry plus reserve-aware withdrawal plus house-ready meaning for apples and flour, with no direct pantry baking and no broader household expansion.
 
-The next active work is planning/design only around one question: what is the smallest durable reason to keep or rebuild one future pie set in household scope for us later instead of treating the pantry as temporary staging before personal baking?
+No further Milestone 2 mechanic is currently authorized. This does not silently start Milestone 3.
 
 ## V1 Loop
 Build a tiny Luanti-based multiplayer prototype proving this loop:

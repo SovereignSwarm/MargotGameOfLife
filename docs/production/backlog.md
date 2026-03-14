@@ -45,11 +45,14 @@ Milestone 1 is complete and frozen at the verified Orchard and Bridge baseline.
 - `save_version` is now `2`; `content_version` remains `1`
 - direct baking from pantry, household `item/pie`, shared coins, shared tree ownership, civic rewrites, and household NPC commentary remain out of scope
 - the current household slice is honestly verified end-to-end in-engine for deposit, withdrawal, shared visibility, save/load round-trip, two-player household correctness, reserve-ready and reserve-incomplete read output, normal surplus withdrawal, reserve-warning no-op behavior, reserve-break confirmation, confirmation reset on read, deposit, different withdraw surface, leave or rejoin, relaunch, co-op invalidation on changed pantry counts, purpose-legible read output, reserve-warning clarity, reserve-break confirmation clarity, rebuild readability after deposit, and save-load neutrality
-- household-purpose meaning is now documented in `docs/design/household_purpose_contract.md` with `keep one pie set ready` as the active planning anchor
-- keep runtime frozen at current pantry-plus-reserve-plus-purpose-legibility scope until a separate approved implementation pass is documented
+- household-purpose meaning remains documented in `docs/design/household_purpose_contract.md` as supporting design context for how this baseline got here
+- `docs/production/milestone_2_baseline_decision.md` is now the active closure anchor
+- Milestone 2 is closed at this current verified household baseline
+- no further Milestone 2 mechanic is currently authorized
+- this does not silently start Milestone 3
 
 ## Milestone 3 - First District Expansion
-- no active backlog items until the next Milestone 2 household step is explicitly documented
+- no active backlog items; Milestone 2 closure does not start this milestone by itself
 
 ## Milestone 4 - First True Judgment / Information Loop
-- no active backlog items until the next Milestone 2 household step is explicitly documented
+- no active backlog items; Milestone 2 closure does not start this milestone by itself

@@ -6,17 +6,17 @@ This page is the operational orientation for the repo. Read it to see the active
 ## Current Milestone
 `Milestone 2 - Shared Household Layer`
 
-Milestone 1 remains the frozen verified Orchard and Bridge baseline. Milestone 2 has now begun in one narrow verified form only: a shared household pantry slice for apples and flour plus reserve-aware withdrawal.
+Milestone 1 remains the frozen verified Orchard and Bridge baseline. Milestone 2 is closed at the current verified household baseline: a shared household pantry slice for apples and flour plus reserve-aware withdrawal plus house-ready meaning.
 
 ## Current Priority
-Keep the honestly verified pantry-plus-reserve household slice narrow and frozen. Household-purpose meaning from `docs/design/household_purpose_contract.md` now appears in runtime only as house-ready versus house-not-ready pantry messaging: keep one future pie set ready for later, and if that set is broken the house is not ready again until `2 apples + 1 flour` are rebuilt. Do not widen into direct pantry baking, shared coins, shared tree ownership, civic rewrites, broader household systems, or household NPC commentary.
+Keep the closed verified household baseline narrow and frozen. Household-purpose meaning from `docs/design/household_purpose_contract.md` appears in runtime only as house-ready versus house-not-ready pantry messaging: keep one future pie set ready for later, and if that set is broken the house is not ready again until `2 apples + 1 flour` are rebuilt. No further Milestone 2 mechanic is currently authorized. This does not silently start Milestone 3.
 
-## Current Planning Anchor
-The active household-purpose anchor remains design-first even after this narrow runtime pass.
+## Current Closure Anchor
+The active Milestone 2 closure anchor is now the baseline decision doc.
 
-Active anchor: `docs/design/household_purpose_contract.md`
+Active anchor: `docs/production/milestone_2_baseline_decision.md`
 
-That contract now informs pantry read, deposit, withdraw, and reserve-break messaging only. It still does not authorize broader household expansion by itself.
+`docs/design/household_purpose_contract.md` remains supporting design context for how this household baseline got here. Neither doc authorizes broader household expansion by itself.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -102,11 +102,11 @@ That contract now informs pantry read, deposit, withdraw, and reserve-break mess
 - civic rewrites
 
 ## Approved Next Baby Steps
-1. keep the verified pantry-plus-reserve household slice frozen at apples-and-flour-only runtime scope
+1. keep the closed verified household baseline frozen at apples-and-flour-only runtime scope
 2. preserve Milestone 1 personal, civic, coin, tree, crafting, and NPC boundaries unchanged under the household pantry layer
-3. use `docs/design/household_purpose_contract.md` as the active meaning anchor for why the household should keep or rebuild one future pie set in shared scope
-4. keep the house-ready versus house-not-ready messaging refinement derived from pantry counts only, with no new saved fields or gameplay authorities
-5. do not begin broader household mechanics or wider Milestone 2 work until a separate approved pass is documented
+3. keep the house-ready versus house-not-ready messaging refinement derived from pantry counts only, with no new saved fields or gameplay authorities
+4. treat no further Milestone 2 mechanic as currently authorized
+5. do not treat Milestone 2 closure as an automatic start of Milestone 3
 
 ## Read This Before You Touch...
 ### Code
