@@ -187,15 +187,38 @@ local function report_failure(player, reason, player_state, world_state)
     )
 end
 
-local function report_success(player, player_state, world_state)
-    tell_player(
-        player,
-        string.format(
-            "You added 5 coins to the shared bridge. | Coins %d | %s",
-            math.floor(tonumber((player_state or {}).coins) or 0),
-            format_bridge_status(world_state)
-        )
+local function report_success_message(player_state, world_state, reflection_line)
+    local message = string.format(
+        "You added 5 coins to the shared bridge. | Coins %d | %s",
+        math.floor(tonumber((player_state or {}).coins) or 0),
+        format_bridge_status(world_state)
     )
+
+    if reflection_line ~= nil and reflection_line ~= "" then
+        message = message .. "\n" .. reflection_line
+    end
+
+    return message
+end
+
+local function report_success(player, player_state, world_state, reflection_line)
+    tell_player(player, report_success_message(player_state, world_state, reflection_line))
+end
+
+local function select_block_d_trigger(pre_stage, pre_funds, post_stage, post_funds)
+    if pre_stage ~= "complete" and post_stage == "complete" then
+        return "bridge_complete"
+    end
+
+    if pre_stage ~= "framing" and post_stage == "framing" then
+        return "bridge_framing"
+    end
+
+    if pre_funds == 0 and post_funds > 0 then
+        return "bridge_first_contribution"
+    end
+
+    return nil
 end
 
 local function handle_bridge_contribution(player)
@@ -216,6 +239,8 @@ local function handle_bridge_contribution(player)
     if changed then
         synced_world = save_world_state(synced_world)
     end
+
+    local pre_stage, pre_funds = get_world_stage(synced_world)
 
     local fixed_coin_amount
     fixed_coin_amount, reason = margot.systems.projects.get_fixed_coin_amount(bridge_project_id)
@@ -245,11 +270,15 @@ local function handle_bridge_contribution(player)
         return
     end
 
+    local post_stage, post_funds = get_world_stage(next_world_state)
+    local reflection_trigger = select_block_d_trigger(pre_stage, pre_funds, post_stage, post_funds)
+    local reflection_line = margot.systems.npc.get_block_d_reflection_line(reflection_trigger)
+
     next_player_state = save_player_state(player, next_player_state)
     next_world_state = save_world_state(next_world_state)
 
     block_c.ensure_bridge_surface(function(_, rendered_world_state)
-        report_success(player, next_player_state, rendered_world_state or next_world_state)
+        report_success(player, next_player_state, rendered_world_state or next_world_state, reflection_line)
     end)
 end
 

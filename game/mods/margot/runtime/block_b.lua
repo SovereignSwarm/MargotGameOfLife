@@ -73,8 +73,14 @@ local function format_status(player_state, asset_state, current_day)
     )
 end
 
-local function report_result(player, summary, player_state, asset_state, current_day)
-    tell_player(player, summary .. " | " .. format_status(player_state, asset_state, current_day))
+local function report_result(player, summary, player_state, asset_state, current_day, reflection_line)
+    local message = summary .. " | " .. format_status(player_state, asset_state, current_day)
+
+    if reflection_line ~= nil and reflection_line ~= "" then
+        message = message .. "\n" .. reflection_line
+    end
+
+    tell_player(player, message)
 end
 
 local function report_failure(player, reason, player_state, asset_state, current_day)
@@ -190,8 +196,21 @@ local function handle_tree_interaction(player)
             return
         end
 
+        local reflection_line = nil
+
+        if next_state.owned_assets[tree_asset_id] ~= nil then
+            reflection_line = margot.systems.npc.get_block_d_reflection_line("tree_purchase")
+        end
+
         next_state = save_player_state(player, next_state)
-        report_result(player, "You bought your own Apple Tree. It will grow apples tomorrow.", next_state, purchase_state, current_day)
+        report_result(
+            player,
+            "You bought your own Apple Tree. It will grow apples tomorrow.",
+            next_state,
+            purchase_state,
+            current_day,
+            reflection_line
+        )
         return
     end
 

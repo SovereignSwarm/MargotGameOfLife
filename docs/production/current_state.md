@@ -6,10 +6,10 @@ This page is the operational orientation for the repo. Read it to see the active
 ## Current Milestone
 `Milestone 1 - Orchard and Bridge`
 
-Milestone 1 has now started. Block A has been verified end-to-end in-engine for the personal apple -> pie -> coin loop, Block B has now been honestly verified end-to-end in-engine on the normal runtime path, and Block C now exists in runtime in a narrow civic-only form. The next valid work is an honest Block C verification pass only, and Block D remains gated behind verified civic state.
+Milestone 1 has now started. Blocks A, B, and C have now each been honestly verified end-to-end in-engine at their approved scope, and Block D now exists in runtime as a narrow stateless reflection layer over verified tree and bridge outcomes. The next valid work is a dedicated Block D verification pass only.
 
 ## Current Priority
-Run a dedicated Block C verification pass through `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, `docs/design/milestone_1_ownership_semantics.md`, and `docs/design/milestone_1_acceptance_criteria.md`. Keep Blocks A and B frozen at their verified scope, keep Block C frozen at its current narrow civic-only form until verified, and do not begin Block D until Block C exit conditions are honestly true.
+Run a dedicated Block D verification pass through `docs/production/milestone_1_checklist.md`, `docs/production/milestone_1_implementation_order.md`, `docs/design/milestone_1_ownership_semantics.md`, and `docs/design/milestone_1_acceptance_criteria.md`. Keep Blocks A, B, and C frozen at their verified scope, keep Block D frozen at its current stateless success-only form until verified, and do not widen it into dialogue, memory, or narrative systems.
 
 ## What Is Already True
 - canon, design, and production hierarchy exists
@@ -40,11 +40,14 @@ Run a dedicated Block C verification pass through `docs/production/milestone_1_c
 - Block C now records bridge contribution total, bridge stage, and bridge completion outcome only in `world_state.civic.project_funds`, `world_state.civic.project_stages`, and `world_state.civic.unlocked_places`
 - Block C now derives bridge stages from saved civic funds, renders the bridge from saved civic truth on join, and keeps all bridge walkable surface nodes at the same surface height as the existing placed starter nodes
 - Block C now turns `project/bridge_01` completion into a visible shared `place/bridge` outcome by placing a walkable bridge span for everyone in the same world
+- Block C has now been honestly verified end-to-end in-engine for insufficient-funds failure, contribution success, stage progression, completion outcome, save/load round-trip, and shared-civic plus separate-personal co-op behavior
+- Block D now appends one optional NPC-attributed follow-up line to success output only for tree purchase, first world bridge contribution, bridge framing, and bridge completion
+- Block D trigger detection is stateless, event-time only, and derived from pre/post personal or civic truth already required by Blocks B and C
+- Block D does not add new save data, does not change ownership scope, and does not change canonical IDs
 
 ## What Is Not Ready Yet
 - the Orchard and Bridge slice is not yet fully implemented
-- Block C is not yet honestly verified end-to-end in-engine
-- Block D is still unbuilt
+- Block D is not yet honestly verified end-to-end in-engine
 - household semantics remain deferred to Milestone 2
 - save smoke expectations are defined, but feature passes still need to verify them as real gameplay state lands
 
@@ -58,7 +61,8 @@ Run a dedicated Block C verification pass through `docs/production/milestone_1_c
 - keep Block A limited to the verified shared starter strip, personal inventory, crafting, sale, and coin flow only
 - keep the current prototype accessibility layer only as the minimum starter-area support needed for verified Blocks A and B, the current Block C runtime, and Block C verification
 - keep Block B frozen at the verified personal tree scope
-- keep Block C limited to one shared bridge site, fixed personal-to-civic coin contribution, explicit civic bridge state, and one visible completion outcome only
+- keep Block C frozen at one shared bridge site, fixed personal-to-civic coin contribution, explicit civic bridge state, and one visible completion outcome only
+- keep Block D frozen at one optional baker or builder follow-up line on defined success triggers only
 - keep personal and civic authorities singular and explicit
 - verify the Milestone 1 save smoke expectations as each block becomes real
 
@@ -71,10 +75,10 @@ Run a dedicated Block C verification pass through `docs/production/milestone_1_c
 - framework-heavy or UI-polish work
 
 ## Approved Next Baby Steps
-1. verify Block C `bridge contribution` success and failure honestly in-engine
-2. verify Block C `bridge stage progression` and shared co-op legibility honestly in-engine
-3. verify Block C `bridge completion outcome` plus save/load round-trip honestly in-engine
-4. do not begin Block D until Block C exit conditions are true
+1. verify Block D `tree purchase` reflection honestly in-engine
+2. verify Block D `first bridge contribution`, `framing`, and `complete` reflections honestly in-engine
+3. verify that Block D added no new save, ID, or ownership authority
+4. keep Block D frozen at its current narrow form until the verification pass is complete
 
 ## Read This Before You Touch...
 ### Code

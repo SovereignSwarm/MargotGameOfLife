@@ -23,11 +23,16 @@ Milestone 1 may begin only through `docs/production/milestone_1_checklist.md`, `
 - implemented in runtime on 2026-03-13 in a narrow civic-only form
 - one shared starter-strip bridge site now turns fixed 5-coin personal contributions into shared civic bridge state
 - bridge stages now progress from foundation to framing to complete from saved civic funds, and completion now unlocks the shared `place/bridge` outcome as a visible walkable span
-- dedicated Block C verification pass is required before Block D begins
+- dedicated Block C verification pass completed on 2026-03-13
+- honestly verified end-to-end in-engine on 2026-03-13 for insufficient-funds failure, contribution success, stage progression, completion outcome, save/load round-trip, and shared-civic plus separate-personal co-op behavior
+- keep frozen at current scope while Block D begins
 
 ### Block D - Reflective Social Layer
-1. implement basic baker commentary
-2. implement basic builder commentary
+- implemented in runtime on 2026-03-13 in a narrow stateless success-only form
+- one optional Baker line now appends only on successful `asset/apple_tree` purchase
+- one optional Builder line now appends only on first shared bridge contribution, `framing`, and `complete`
+- no new save data, ownership scope, or canonical IDs were introduced for Block D
+- dedicated Block D verification pass is required before Milestone 1 is treated as complete
 
 ## Milestone 2 - Shared Household Layer Prep
 1. define which current assets and places may become household scope later

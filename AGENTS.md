@@ -111,5 +111,6 @@ Every implementation pass should report:
 - For Milestone 1 implementation, use `docs/design/milestone_1_acceptance_criteria.md` as the completion gate.
 - After any substantial design, production, architecture, or implementation task, perform a post-task documentation sync pass before treating the work as complete.
 - Use `.agents/skills/post_task_doc_sync/SKILL.md` for the sync pass when the task fits that workflow.
+- For housekeeping or documentation passes, prefer no-op over speculative cleanup and only update docs when repo truth has clearly changed.
 - Do not widen v1 scope, add speculative systems, or introduce runtime LLM features.
 - Keep code small, readable, and explicit. Prefer data-driven definitions and clear state boundaries.

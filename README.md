@@ -11,9 +11,9 @@ Money is not the goal. Money is fuel.
 - If you are implementing Orchard and Bridge, read `docs/design/milestone_1_ownership_semantics.md`, `docs/production/milestone_1_implementation_order.md`, `docs/production/milestone_1_checklist.md`, and `docs/design/milestone_1_acceptance_criteria.md` before coding.
 
 ## Current Milestone
-The repo is currently in `Milestone 0 - Canon and Repo Foundation`.
+The repo is currently in `Milestone 1 - Orchard and Bridge`.
 
-The current focus is the locked Milestone 1 readiness layer for Orchard and Bridge: frozen starter IDs, explicit ownership semantics, save smoke expectations, approved implementation order, and the checklist gate that must be used before implementation begins.
+The current focus is an honest Block C verification pass only: keep Block A and Block B frozen at verified scope, keep Block C frozen at its current narrow civic-only form until verified, and do not begin Block D until Block C exit conditions are true.
 
 ## V1 Loop
 Build a tiny Luanti-based multiplayer prototype proving this loop:
