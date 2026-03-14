@@ -1,4 +1,5 @@
 local pantry = {}
+local _
 
 local node_names = {
     apple_deposit = "margot:household_pantry_apple_deposit",
