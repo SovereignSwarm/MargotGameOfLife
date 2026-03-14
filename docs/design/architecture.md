@@ -25,12 +25,17 @@ Keep design truth separate from runtime implementation so the project can grow a
 - `systems/crafting.lua`
 - `systems/economy.lua`
 - `systems/ownership.lua`
+- `systems/household.lua`
 - `systems/projects.lua`
 - `systems/npc.lua`
 - `runtime/state.lua`
 - `runtime/persistence.lua`
 - `runtime/migrations.lua`
 - `runtime/debug.lua`
+- `runtime/block_a.lua`
+- `runtime/block_b.lua`
+- `runtime/block_c.lua`
+- `runtime/household_pantry.lua`
 
 ## Data Rules
 - use stable canonical IDs from `docs/production/id_policy.md`
