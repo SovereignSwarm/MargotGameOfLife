@@ -168,6 +168,23 @@ local function save_player_state(player, player_state)
     return margot.runtime.persistence.save_player_state(player:get_player_name(), player_state)
 end
 
+local function load_world_state()
+    return margot.runtime.state.copy_world_state(
+        margot.runtime.world_state or margot.runtime.persistence.load_world_state()
+    )
+end
+
+local function save_world_state(world_state)
+    local saved_world = margot.runtime.persistence.save_world_state(world_state)
+    margot.runtime.world_state = saved_world
+    return saved_world
+end
+
+local function is_station_ready(world_state)
+    local condition = world_state.civic.place_conditions["place/crafting_station"]
+    return condition == nil or condition == "ready"
+end
+
 local function report_result(player, summary, player_state)
     tell_player(player, summary .. " | " .. format_status(player_state))
 end
@@ -201,7 +218,45 @@ local function handle_pickup(player, item_id, amount, summary)
     report_result(player, summary, player_state)
 end
 
+local function handle_recommission(player)
+    local player_state = load_player_state(player)
+    local world_state = load_world_state()
+
+    if is_station_ready(world_state) then
+        return false
+    end
+
+    local next_inventory, reason = margot.runtime.state.apply_inventory_delta(
+        player_state.inventory,
+        "item/flour",
+        -1
+    )
+
+    if next_inventory == nil then
+        if reason == "insufficient_items" then
+            report_result(player, "Need 1 Flour to prepare the station.", player_state)
+        else
+            report_failure(player, reason, player_state)
+        end
+
+        return true
+    end
+
+    player_state.inventory = next_inventory
+    world_state.civic.place_conditions["place/crafting_station"] = "ready"
+
+    player_state = save_player_state(player, player_state)
+    save_world_state(world_state)
+
+    report_result(player, "Prepared the station with 1 Flour.", player_state)
+    return true
+end
+
 local function handle_craft(player)
+    if handle_recommission(player) then
+        return
+    end
+
     local player_state = load_player_state(player)
     local next_state, reason = margot.systems.crafting.craft_at_place(
         player_state,

@@ -87,6 +87,7 @@ function state.new_civic_state()
         project_funds = {},
         project_stages = {},
         unlocked_places = {},
+        place_conditions = {},
     }
 end
 
@@ -126,6 +127,7 @@ function state.ensure_world_state_shape(existing)
     working.civic.project_funds = working.civic.project_funds or {}
     working.civic.project_stages = working.civic.project_stages or {}
     working.civic.unlocked_places = working.civic.unlocked_places or {}
+    working.civic.place_conditions = working.civic.place_conditions or {}
 
     return stamp_versions(working)
 end

@@ -274,6 +274,12 @@ local function handle_bridge_contribution(player)
     local reflection_trigger = select_block_d_trigger(pre_stage, pre_funds, post_stage, post_funds)
     local reflection_line = margot.systems.npc.get_block_d_reflection_line(reflection_trigger)
 
+    if pre_stage ~= "complete" and post_stage == "complete" then
+        if next_world_state.civic.place_conditions["place/crafting_station"] == nil then
+            next_world_state.civic.place_conditions["place/crafting_station"] = "not_ready"
+        end
+    end
+
     next_player_state = save_player_state(player, next_player_state)
     next_world_state = save_world_state(next_world_state)
 

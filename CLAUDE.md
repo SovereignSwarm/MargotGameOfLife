@@ -5,9 +5,9 @@ Private parent-child co-op village life sim built on Luanti. Players gather, cra
 
 ## Current Project State
 - **Active milestone**: Milestone 2 (Shared Household Layer) - CLOSED and FROZEN
-- **save_version**: 2 | **content_version**: 1
+- **save_version**: 3 | **content_version**: 1
 - **Closure anchor**: `docs/production/milestone_2_baseline_decision.md`
-- **Milestone 3**: Planning-only. No implementation authorized.
+- **Milestone 3**: Station condition implemented. `place/crafting_station` has durable ready/not_ready condition.
 
 ## Frozen Milestone Truths
 
@@ -39,7 +39,7 @@ Best shape: one specialist-linked existing-village place with durable ready/rest
 |---|---|---|
 | Personal | inventory, coins, owned_assets, tree yield, pies, sale results | per-player saves |
 | Household | `world_state.household.inventory` only (apple + flour counts) | world save |
-| Civic | `world_state.civic.project_funds/stages/unlocked_places` | world save |
+| Civic | `world_state.civic.project_funds/stages/unlocked_places/place_conditions` | world save |
 
 These three scopes MUST stay explicit and MUST NOT blur into mixed read/write paths.
 
