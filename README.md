@@ -6,6 +6,7 @@ Money is not the goal. Money is fuel.
 
 ## Start Here
 - Read `docs/README.md` for the full docs map and authority order.
+- Read `.molthub/project.md` and `.molthub/README.md` for public MoltHub publication metadata.
 - If you are working through Codex or Cursor, read `AGENTS.md` for the repo operating contract.
 - Then read `docs/production/current_state.md` for the active milestone, current priority, top risks, and approved next baby steps.
 - If you are implementing Orchard and Bridge, read `docs/design/milestone_1_ownership_semantics.md`, `docs/production/milestone_1_implementation_order.md`, `docs/production/milestone_1_checklist.md`, and `docs/design/milestone_1_acceptance_criteria.md` before coding.
